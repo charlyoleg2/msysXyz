@@ -3,7 +3,7 @@
 
 import type {
 	tParamDef,
-	tParamVal
+	tParamVal,
 	//tSubInst,
 	//tSubDesign,
 	tPageDef
@@ -18,38 +18,44 @@ interface tAppliedParam {
 	chg: boolean;
 }
 type tSubParams = Record<string, tAppliedParam>;
-interface tSubCompt {
+interface tSubComp {
 	partName: string;
-	objectDef: tComponentDef;
+	objectDef?: tComponentDef;
 	dparam: tSubParams;
 	orientation: tVec3;
 	position: tVec3;
 }
 type tSubRecord = Record<string, tSubComp>;
 
+interface tCompIn {
+	instName: string;
+	simtime: number;
+	ipVal: tParamVal;
+	suffix?: string;
+}
 interface tCompOut {
 	partName: string;
 	instanceName: string;
 	calcErr: boolean;
 	logstr: string;
-	metrics: tMerics;
+	metrics: tMetrics;
 	parametrix: {
 		url: string;
 		partName: string;
 		objectName: string;
 		objectDef?: tPageDef;
-		json: tParamVal;
-	}
+		pxJson: tParamVal;
+	};
 	sub: tSubRecord;
 }
-type tCalcCompFunc = (instName: string, t: number, ipVal: tParamVal, suffix?: string) => tCompOut;
+type tCompCompFunc = (compIn: tCompIn) => tCompOut;
 
 interface tComponentDef {
 	compName: string;
 	compDescription: string;
 	compParams: tParamDef;
-	compCalc: tCalcCompFunc;
+	compCompute: tCompCompFunc;
 }
-type tComponentRecord = Record<string, tComponentDef>;
 
-export type { tParamDef, tParamVal, tCompOut, tCalcCompFunc, tComponentDef, tComponentRecord };
+export type { tParamDef, tParamVal, tCompIn, tCompOut, tCompCompFunc, tComponentDef };
+export { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'geometrix';
