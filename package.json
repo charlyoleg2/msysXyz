@@ -1,0 +1,61 @@
+{
+	"name": "msysXyz",
+	"version": "0.1.0",
+	"description": "The mono-repo for sysXyz, sysXyz-cli, sysXyz-ui and sysXyz-uis",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/charlyoleg2/msysXyz.git"
+	},
+	"homepage": "https://charlyoleg2.github.io/msysXyz/",
+	"author": "charlyoleg",
+	"license": "ISC",
+	"keywords": [
+		"parametrix",
+		"systemix",
+		"system engineering"
+	],
+	"type": "module",
+	"workspaces": [
+		"pkg/*"
+	],
+	"scripts": {
+		"sysXyz:dev": "npm -w sysXyz run dev",
+		"sysXyz:ci": "npm -w sysXyz run ci",
+		"sysXyz:svgo": "npm -w sysXyz run svgo",
+		"sysXyz:clean": "npm -w sysXyz run clean",
+		"sysXyz:version": "npm -w sysXyz version patch",
+		"sysXyz:publish": "npm -w sysXyz publish --provenance",
+		"sysXyz-ui:dev": "npm -w sysXyz-ui run dev",
+		"sysXyz-ui:ci": "npm -w sysXyz-ui run ci",
+		"sysXyz-ui:clean": "npm -w sysXyz-ui run clean",
+		"sysXyz-ui:preview": "npm -w sysXyz-ui run preview",
+		"sysXyz-ui:version": "npm -w sysXyz-ui version patch",
+		"sysXyz-cli:ci": "npm -w sysXyz-cli run ci",
+		"sysXyz-cli:run": "npm -w sysXyz-cli run run",
+		"sysXyz-cli:clean": "npm -w sysXyz-cli run clean",
+		"sysXyz-cli:version": "npm -w sysXyz-cli version patch",
+		"sysXyz-cli:publish": "npm -w sysXyz-cli publish --provenance",
+		"sysXyz-uis:ci": "npm -w sysXyz-uis run ci",
+		"sysXyz-uis:copy_public": "npm -w sysXyz-uis run copy_public",
+		"sysXyz-uis:run": "npm -w sysXyz-uis run run",
+		"sysXyz-uis:clean": "npm -w sysXyz-uis run clean",
+		"sysXyz-uis:version": "npm -w sysXyz-uis version patch",
+		"sysXyz-uis:publish": "npm -w sysXyz-uis publish --provenance",
+		"ci": "run-s sysXyz:ci sysXyz-ui:ci sysXyz-cli:ci sysXyz-uis:ci",
+		"ci2": "run-s sysXyz:ci sysXyz-ui:ci",
+		"ci3": "run-s sysXyz:ci sysXyz-cli:ci",
+		"clean-root": "rimraf tmp output output2",
+		"clean": "run-s clean-root sysXyz:clean sysXyz-ui:clean sysXyz-cli:clean sysXyz-uis:clean",
+		"preview": "run-s sysXyz-ui:preview",
+		"run-uis": "run-s sysXyz-uis:run",
+		"run-cli": "run-s sysXyz-cli:run",
+		"versions": "run-s sysXyz:version sysXyz-ui:version sysXyz-cli:version sysXyz-uis:version",
+		"gh-publish": "run-s sysXyz:publish sysXyz-cli:publish sysXyz-uis:publish",
+		"ls-workspaces": "npm -ws exec -c pwd"
+	},
+	"devDependencies": {
+		"npm-run-all2": "^8.0.4",
+		"rimraf": "^6.0.1"
+	}
+}
