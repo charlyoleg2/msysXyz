@@ -5,7 +5,7 @@ sysXyz
 Presentation
 ------------
 
-*sysXyz* is a *system library* based on [systemix](https://charlyoleg2.github.io/systemix/).
+*sysXyz* is a *system library* based on [systemix](https://www.npmjs.com/package/systemix).
 
 It contains the parameters of the system *Xyz*.
 
