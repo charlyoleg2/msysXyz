@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 // sysXyz-cli.ts
 // the CLI of the package sysXyz
 
