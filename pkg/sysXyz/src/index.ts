@@ -1,11 +1,5 @@
 // index.ts
-// list of system definition
+// export top-level component-definition and parameters
 
-import { compXyzSDef } from './compXyz';
-import { compXyzIn } from './sysXyz';
-
-// compute the component compXyz
-const compXyzOut = compXyzSDef.compCompute(compXyzIn);
-
-// Use some results
-console.log(`sysXyz metrics: weight: ${compXyzOut.metrics.weight} kg`);
+export { compXyzSDef } from './compXyz';
+export { compXyzIn } from './sysXyz';

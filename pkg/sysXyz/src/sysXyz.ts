@@ -1,7 +1,7 @@
 // sysXyz.ts
 // the parametrization of the top-level component compXyz
 
-import type { tParamVal, tCompIn } from './systemix';
+import type { tParamVal, tCompIn } from 'systemix';
 //import { compXyzSDef } from './compXyz';
 
 // the parametrization
