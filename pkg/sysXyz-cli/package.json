@@ -1,7 +1,7 @@
 {
-	"name": "sysXyz",
+	"name": "sysXyz-cli",
 	"version": "0.1.0",
-	"description": "The parameter pyramid of the system Xyz",
+	"description": "The CLI of sysXyz",
 	"private": false,
 	"repository": {
 		"type": "git",
@@ -18,8 +18,8 @@
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"default": "./dist/index.js"
+			"types": "./dist/sysXyz-cli.d.ts",
+			"default": "./dist/sysXyz-cli.js"
 		}
 	},
 	"files": [
@@ -30,7 +30,7 @@
 	],
 	"tsup": {
 		"entry": [
-			"src/index.ts"
+			"src/sysXyz-cli.ts"
 		],
 		"format": "esm",
 		"splitting": false,
@@ -47,27 +47,21 @@
 		"lint": "eslint .",
 		"test:unit": "vitest",
 		"test:unit:once": "vitest --run",
-		"ci": "run-s check build pretty lint test:unit:once svgo",
-		"svgo1": "svgo -f src/svg -o dist/pgdsvg/",
-		"svgo": "run-s svgo1",
-		"browserBundleA": "esbuild src/sysXyz.ts --bundle --format=esm --outfile=dist2/sysXyz.js",
-		"browserBundleAll": "esbuild dist/index.js --bundle --format=esm --outfile=dist2/sysXyz.js",
+		"ci": "run-s check build pretty lint test:unit:once",
 		"clean": "rimraf dist dist2 node_modules"
 	},
 	"dependencies": {
-		"systemix": "^0.1.0"
+		"sysXyz": "^0.1.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.10.0",
 		"@types/eslint__js": "^8.42.3",
-		"esbuild": "^0.25.6",
 		"eslint": "^9.30.1",
 		"eslint-config-prettier": "^10.1.5",
 		"geometrix": "^1.0.22",
 		"npm-run-all2": "^8.0.4",
 		"prettier": "^3.6.2",
 		"rimraf": "^6.0.1",
-		"svgo": "^4.0.0",
 		"tsup": "^8.5.0",
 		"typescript": "^5.8.3",
 		"typescript-eslint": "^8.36.0",

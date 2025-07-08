@@ -1,0 +1,11 @@
+// sysXyz-cli.ts
+// the CLI of the package sysXyz
+
+import { compXyzSDef } from 'sysXyz';
+import { compXyzIn } from 'sysXyz';
+
+// compute the component compXyz
+const compXyzOut = compXyzSDef.compCompute(compXyzIn);
+
+// Use some results
+console.log(`sysXyz metrics: weight: ${compXyzOut.metrics.weight} kg`);
