@@ -1,6 +1,6 @@
 {
 	"name": "msysXyz",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "The mono-repo for sysXyz, sysXyz-cli, sysXyz-ui and sysXyz-uis",
 	"private": true,
 	"repository": {
