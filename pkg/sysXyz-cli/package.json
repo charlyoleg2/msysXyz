@@ -1,6 +1,6 @@
 {
 	"name": "sysXyz-cli",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "The CLI of sysXyz",
 	"private": false,
 	"repository": {
