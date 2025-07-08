@@ -1,0 +1,92 @@
+{
+	"name": "sysXyz-uis",
+	"description": "sysXyz-uis for installing locally the web-ui sysXyz-ui",
+	"version": "0.1.0",
+	"private": false,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/charlyoleg2/sysXyz.git"
+	},
+	"homepage": "https://charlyoleg2.github.io/sysXyz/",
+	"author": "charlyoleg",
+	"license": "ISC",
+	"keywords": [
+		"systemix",
+		"sysXyz",
+		"feli"
+	],
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/sysXyz-uis.d.ts",
+			"default": "./dist/sysXyz-uis.js"
+		}
+	},
+	"bin": {
+		"sysXyz-uis": "dist/sysXyz-uis.js"
+	},
+	"files": [
+		"dist/",
+		"!dist/**/*.d.ts",
+		"!dist/**/*.map",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"tsup": {
+		"entry": [
+			"src/sysXyz-uis.ts"
+		],
+		"format": "esm",
+		"splitting": false,
+		"dts": false,
+		"sourcemap": false,
+		"clean": true
+	},
+	"prettier": {
+		"useTabs": true,
+		"singleQuote": true,
+		"trailingComma": "none",
+		"printWidth": 100,
+		"plugins": [],
+		"overrides": []
+	},
+	"scripts": {
+		"dev": "tsup --watch",
+		"build": "tsup",
+		"check": "tsc --noEmit",
+		"pretty": "prettier --check .",
+		"format": "prettier --write .",
+		"lint": "eslint .",
+		"test:unit": "vitest",
+		"test:unit:once": "vitest --run",
+		"clean_public": "rimraf dist/public",
+		"copy_ui": "shx cp -r ../sysXyz-ui/build dist/public",
+		"checkCopy": "ls -l dist/public/index.html",
+		"copy_public": "run-s clean_public copy_ui checkCopy",
+		"ci": "run-s check build pretty lint test:unit:once copy_public",
+		"run": "node dist/sysXyz-uis.js",
+		"run-help": "node dist/sysXyz-uis.js --help",
+		"clean": "rimraf node_modules build dist tmp"
+	},
+	"dependencies": {
+		"feli": "^1.0.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.10.0",
+		"@types/eslint__js": "^8.42.3",
+		"@types/node": "^24.0.10",
+		"eslint": "^9.30.1",
+		"eslint-config-prettier": "^10.1.5",
+		"npm-run-all2": "^8.0.4",
+		"prettier": "^3.6.2",
+		"rimraf": "^6.0.1",
+		"shx": "^0.4.0",
+		"tsup": "^8.5.0",
+		"typescript": "^5.8.3",
+		"typescript-eslint": "^8.35.1",
+		"vitest": "^3.2.4"
+	}
+}
