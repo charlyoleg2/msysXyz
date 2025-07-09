@@ -11,18 +11,22 @@ const compDef: tParamDef = {
 	partName: 'compXyz',
 	params: [
 		//pNumber(name, unit, init, min, max, step)
-		pNumber('D1', 'mm', 30, 1, 500, 1),
-		pNumber('H1', 'mm', 50, 1, 500, 1),
-		pSectionSeparator('details'),
-		pNumber('Lsquare', 'mm', 100, 10, 1000, 1),
-		pNumber('Dcylinder', 'mm', 100, 10, 1000, 1),
+		pNumber('Di', 'mm', 30, 1, 500, 1),
+		pNumber('D3', 'mm', 50, 1, 500, 1),
+		pNumber('T2', 'mm', 70, 1, 500, 1),
+		pNumber('Q1', 'mm', 50, 1, 500, 1),
+		pSectionSeparator('heights and details'),
+		pNumber('H1', 'mm', 40, 10, 1000, 1),
+		pNumber('H2', 'mm', 40, 10, 1000, 1),
 		pDropdown('stage2', ['square', 'triangle', 'cylinder'])
 	],
 	paramSvg: {
-		D1: 'compXYZ.svg',
+		Di: 'compXYZ.svg',
+		D3: 'compXYZ.svg',
+		T2: 'compXYZ.svg',
+		Q1: 'compXYZ.svg',
 		H1: 'compXYZ.svg',
-		Lsquare: 'compXyz.svg',
-		Dcylinder: 'compXyz.svg',
+		H2: 'compXYZ.svg',
 		stage2: 'compXyz.svg'
 	},
 	sim: {
