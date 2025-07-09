@@ -39,12 +39,12 @@ const compDef: tParamDef = {
 	}
 };
 
-function compCompute(compIn: tCompIn): tCompOut {
+function compCompute(ci: tCompIn): tCompOut {
 	const rCO: tCompOut = {
 		partName: compDef.partName,
-		instanceName: compIn.instName,
+		instanceName: ci.instName,
 		calcErr: false,
-		logstr: `Component: ${compDef.partName} :: ${compIn.instName}`,
+		logstr: `Component: ${compDef.partName} :: ${ci.instName}`,
 		metrics: {},
 		parametrix: {
 			url: 'https://charlyoleg2.github.io/parame76/desi76/compXyz',
@@ -57,9 +57,9 @@ function compCompute(compIn: tCompIn): tCompOut {
 			stage1: {
 				component: compXSDef,
 				dparam: {
-					Di: compIn.ipVal.Di,
-					Q1: compIn.ipVal.Q1,
-					H1: compIn.ipVal.H1
+					Di: ci.pa.Di,
+					Q1: ci.pa.Q1,
+					H1: ci.pa.H1
 				},
 				orientation: [0, 0, 0],
 				position: [0, 0, 0]
@@ -67,22 +67,22 @@ function compCompute(compIn: tCompIn): tCompOut {
 			stage2: {
 				component: compYSDef,
 				dparam: {
-					Di: compIn.ipVal.Di,
-					T1: compIn.ipVal.T1,
-					H1: compIn.ipVal.H1
+					Di: ci.pa.Di,
+					T1: ci.pa.T1,
+					H1: ci.pa.H1
 				},
 				orientation: [0, 0, 0],
-				position: [0, 0, compIn.ipVal.H1 + compIn.ipVal.H2]
+				position: [0, 0, ci.pa.H1 + ci.pa.H2]
 			},
 			stage3: {
 				component: compZSDef,
 				dparam: {
-					Di: compIn.ipVal.Di,
-					D3: compIn.ipVal.D3,
-					H1: compIn.ipVal.H1
+					Di: ci.pa.Di,
+					D3: ci.pa.D3,
+					H1: ci.pa.H1
 				},
 				orientation: [0, 0, 0],
-				position: [0, 0, 2 * (compIn.ipVal.H1 + compIn.ipVal.H2)]
+				position: [0, 0, 2 * (ci.pa.H1 + ci.pa.H2)]
 			}
 		}
 	};

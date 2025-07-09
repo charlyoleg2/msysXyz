@@ -5,6 +5,7 @@
 import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
 import { pNumber, pDropdown, pSectionSeparator } from 'systemix';
+import { compY2SDef } from './compY2';
 
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
@@ -32,12 +33,12 @@ const compDef: tParamDef = {
 	}
 };
 
-function compCompute(compIn: tCompIn): tCompOut {
+function compCompute(ci: tCompIn): tCompOut {
 	const rCO: tCompOut = {
 		partName: compDef.partName,
-		instanceName: compIn.instName,
+		instanceName: ci.instName,
 		calcErr: false,
-		logstr: `Component: ${compDef.partName} :: ${compIn.instName}`,
+		logstr: `Component: ${compDef.partName} :: ${ci.instName}`,
 		metrics: {},
 		parametrix: {
 			url: 'https://charlyoleg2.github.io/parame76/desi76/compY',
@@ -46,7 +47,19 @@ function compCompute(compIn: tCompIn): tCompOut {
 			//objectDef?: compYDef,
 			pxJson: {}
 		},
-		sub: {}
+		sub: {
+			refine: {
+				component: compY2SDef,
+				dparam: {
+					Di: ci.pa.Di,
+					T2: ci.pa.T2,
+					H1: ci.pa.H1,
+					N2: 3
+				},
+				orientation: [0, 0, 0],
+				position: [0, 0, ci.pa.H1 + ci.pa.H2]
+			},
+		}
 	};
 	rCO.metrics['weight'] = 8;
 	return rCO;

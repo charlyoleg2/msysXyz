@@ -1,27 +1,29 @@
-// compX.ts
-// the component X of the system Xyz
+// compY2.ts
+// the sub-component Y2 of the component Y of the system Xyz
 
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef } from 'systemix';
 import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
-import { pNumber, pSectionSeparator } from 'systemix';
+import { pNumber, pDropdown, pSectionSeparator } from 'systemix';
 
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
-	partName: 'compX',
+	partName: 'compY2',
 	params: [
 		//pNumber(name, unit, init, min, max, step)
 		pNumber('Di', 'mm', 30, 1, 500, 1),
-		pNumber('Q1', 'mm', 50, 1, 500, 1),
+		pNumber('T2', 'mm', 70, 1, 500, 1),
+		pNumber('N2', 'triangles', 3, 1, 10, 1),
 		pSectionSeparator('heights and details'),
 		pNumber('H1', 'mm', 40, 10, 1000, 1),
-		pNumber('R1', 'mm', 5, 0, 100, 1)
+		pNumber('R2', 'mm', 5, 0, 100, 1)
 	],
 	paramSvg: {
-		Di: 'compXyz.svg',
-		Q1: 'compXyz.svg',
-		H1: 'compXyz.svg',
-		R1: 'compXyz.svg'
+		Di: 'compXyz_compY.svg',
+		T2: 'compXyz_compY.svg',
+		N2: 'compXyz_compY.svg',
+		H1: 'compXyz_compY.svg',
+		R2: 'compXyz_compY.svg'
 	},
 	sim: {
 		tMax: 180,
@@ -38,23 +40,23 @@ function compCompute(ci: tCompIn): tCompOut {
 		logstr: `Component: ${compDef.partName} :: ${ci.instName}`,
 		metrics: {},
 		parametrix: {
-			url: 'https://charlyoleg2.github.io/parame76/desi76/compX',
-			partName: 'compX',
-			objectName: 'compXDef',
-			//objectDef?: compXDef,
+			url: 'https://charlyoleg2.github.io/parame76/desi76/compY',
+			partName: 'compY2',
+			objectName: 'compY2Def',
+			//objectDef?: compY2Def,
 			pxJson: {}
 		},
 		sub: {}
 	};
-	rCO.metrics['weight'] = (ci.pa.Q1 - ci.pa.Di) * ci.pa.H1;
+	rCO.metrics['weight'] = (ci.pa.T2 - ci.pa.Di) * ci.pa.H1 / ci.pa.N2;
 	return rCO;
 }
 
-const compXSDef: tComponentDef = {
+const compY2SDef: tComponentDef = {
 	compName: compDef.partName,
-	compDescription: 'compX is the shape of the stage-1',
+	compDescription: 'compY2 is the detailed component of compY',
 	compParams: compDef,
 	compCompute: compCompute
 };
 
-export { compXSDef };
+export { compY2SDef };

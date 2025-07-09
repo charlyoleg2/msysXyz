@@ -28,12 +28,12 @@ const compDef: tParamDef = {
 	}
 };
 
-function compCompute(compIn: tCompIn): tCompOut {
+function compCompute(ci: tCompIn): tCompOut {
 	const rCO: tCompOut = {
 		partName: compDef.partName,
-		instanceName: compIn.instName,
+		instanceName: ci.instName,
 		calcErr: false,
-		logstr: `Component: ${compDef.partName} :: ${compIn.instName}`,
+		logstr: `Component: ${compDef.partName} :: ${ci.instName}`,
 		metrics: {},
 		parametrix: {
 			url: 'https://charlyoleg2.github.io/parame76/desi76/compZ',
@@ -44,7 +44,7 @@ function compCompute(compIn: tCompIn): tCompOut {
 		},
 		sub: {}
 	};
-	rCO.metrics['weight'] = 5;
+	rCO.metrics['weight'] = (ci.pa.D3 - ci.pa.Di) * ci.pa.H1;
 	return rCO;
 }
 

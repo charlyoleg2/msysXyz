@@ -14,7 +14,7 @@ const sysXyzParams: tParamVal = {
 const compXyzIn: tCompIn = {
 	instName: 'Xyz',
 	simtime: 0,
-	ipVal: sysXyzParams,
+	pa: sysXyzParams,
 	suffix: ''
 };
 

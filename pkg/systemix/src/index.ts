@@ -30,7 +30,7 @@ type tSubRecord = Record<string, tSubComp>;
 interface tCompIn {
 	instName: string;
 	simtime: number;
-	ipVal: tParamVal;
+	pa: tParamVal;
 	suffix?: string;
 }
 interface tCompOut {
