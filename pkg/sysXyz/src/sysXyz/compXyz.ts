@@ -5,6 +5,9 @@
 import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
 import { pNumber, pDropdown, pSectionSeparator } from 'systemix';
+import { compXSDef } from './compX';
+import { compYSDef } from './compY';
+import { compZSDef } from './compZ';
 
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
@@ -21,12 +24,12 @@ const compDef: tParamDef = {
 		pDropdown('stage2', ['square', 'triangle', 'cylinder'])
 	],
 	paramSvg: {
-		Di: 'compXYZ.svg',
-		D3: 'compXYZ.svg',
-		T2: 'compXYZ.svg',
-		Q1: 'compXYZ.svg',
-		H1: 'compXYZ.svg',
-		H2: 'compXYZ.svg',
+		Di: 'compXyz.svg',
+		D3: 'compXyz.svg',
+		T2: 'compXyz.svg',
+		Q1: 'compXyz.svg',
+		H1: 'compXyz.svg',
+		H2: 'compXyz.svg',
 		stage2: 'compXyz.svg'
 	},
 	sim: {
@@ -44,13 +47,44 @@ function compCompute(compIn: tCompIn): tCompOut {
 		logstr: `Component: ${compDef.partName} :: ${compIn.instName}`,
 		metrics: {},
 		parametrix: {
-			url: 'https://charlyoleg2.github.io/parame76/desi76/compXYZ',
+			url: 'https://charlyoleg2.github.io/parame76/desi76/compXyz',
 			partName: 'compXyz',
 			objectName: 'compXyzDef',
 			//objectDef?: compXyzDef,
 			pxJson: {}
 		},
-		sub: {}
+		sub: {
+			stage1: {
+				component: compXSDef,
+				dparam: {
+					Di: compIn.ipVal.Di,
+					Q1: compIn.ipVal.Q1,
+					H1: compIn.ipVal.H1
+				},
+				orientation: [0, 0, 0],
+				position: [0, 0, 0]
+			},
+			stage2: {
+				component: compYSDef,
+				dparam: {
+					Di: compIn.ipVal.Di,
+					T1: compIn.ipVal.T1,
+					H1: compIn.ipVal.H1
+				},
+				orientation: [0, 0, 0],
+				position: [0, 0, compIn.ipVal.H1 + compIn.ipVal.H2]
+			},
+			stage3: {
+				component: compZSDef,
+				dparam: {
+					Di: compIn.ipVal.Di,
+					D3: compIn.ipVal.D3,
+					H1: compIn.ipVal.H1
+				},
+				orientation: [0, 0, 0],
+				position: [0, 0, 2 * (compIn.ipVal.H1 + compIn.ipVal.H2)]
+			}
+		}
 	};
 	rCO.metrics['weight'] = 53;
 	return rCO;

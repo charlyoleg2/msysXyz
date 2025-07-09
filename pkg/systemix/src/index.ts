@@ -12,15 +12,15 @@ import type {
 type tMetrics = Record<string, number>;
 
 type tVec3 = [number, number, number];
-interface tAppliedParam {
-	val: number;
-	init: number;
-	chg: boolean;
-}
-type tSubParams = Record<string, tAppliedParam>;
+//interface tAppliedParam {
+//	val: number;
+//	init: number;
+//	chg: boolean;
+//}
+//type tSubParams = Record<string, tAppliedParam>;
+type tSubParams = Record<string, number>;
 interface tSubComp {
-	partName: string;
-	objectDef?: tComponentDef;
+	component?: tComponentDef;
 	dparam: tSubParams;
 	orientation: tVec3;
 	position: tVec3;
