@@ -58,7 +58,7 @@ function compCompute(ci: tCompIn): tCompOut {
 				},
 				orientation: [0, 0, 0],
 				position: [0, 0, ci.pa.H1 + ci.pa.H2]
-			},
+			}
 		}
 	};
 	rCO.metrics['weight'] = 8;

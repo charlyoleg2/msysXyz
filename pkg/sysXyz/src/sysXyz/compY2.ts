@@ -48,7 +48,7 @@ function compCompute(ci: tCompIn): tCompOut {
 		},
 		sub: {}
 	};
-	rCO.metrics['weight'] = (ci.pa.T2 - ci.pa.Di) * ci.pa.H1 / ci.pa.N2;
+	rCO.metrics['weight'] = ((ci.pa.T2 - ci.pa.Di) * ci.pa.H1) / ci.pa.N2;
 	return rCO;
 }
 
