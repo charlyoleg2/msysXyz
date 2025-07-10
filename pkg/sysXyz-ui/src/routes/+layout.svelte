@@ -12,8 +12,8 @@
 <header>
 	<a href="{base}/" style="text-decoration:none;color:navy;">
 		<h1>
-			<img src="{base}/feli_logo.svg" alt="Feli's logo" width="42" height="42" />
-			Feli pages
+			<img src="{base}/systemix_logo.svg" alt="Feli's logo" width="42" height="42" />
+			sysXyz pages
 		</h1>
 	</a>
 </header>
