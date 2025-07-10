@@ -50,7 +50,7 @@ function compCompute(ci: tCompIn): tCompOut {
 		sub: {
 			refine: {
 				component: compY2SDef,
-				dparam: {
+				pa: {
 					Di: ci.pa.Di,
 					T2: ci.pa.T2,
 					H1: ci.pa.H1,

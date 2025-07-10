@@ -2,9 +2,10 @@
 // the top-level component of the system Xyz
 
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef } from 'systemix';
-import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
+import type { tParamDef, tSubRecord, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
-import { pNumber, pDropdown, pSectionSeparator } from 'systemix';
+import { pNumber, pDropdown, pSectionSeparator, combineParams, computeSubComp } from 'systemix';
+
 import { compXSDef } from './compX';
 import { compYSDef } from './compY';
 import { compZSDef } from './compZ';
@@ -40,6 +41,8 @@ const compDef: tParamDef = {
 };
 
 function compCompute(ci: tCompIn): tCompOut {
+	const ipa = combineParams(compDef, ci);
+	// prepare output
 	const rCO: tCompOut = {
 		partName: compDef.partName,
 		instanceName: ci.instName,
@@ -53,40 +56,46 @@ function compCompute(ci: tCompIn): tCompOut {
 			//objectDef?: compXyzDef,
 			pxJson: {}
 		},
-		sub: {
-			stage1: {
-				component: compXSDef,
-				dparam: {
-					Di: ci.pa.Di,
-					Q1: ci.pa.Q1,
-					H1: ci.pa.H1
-				},
-				orientation: [0, 0, 0],
-				position: [0, 0, 0]
+		sub: {}
+	};
+	// define sub-components
+	const isub: tSubRecord = {
+		stage1: {
+			component: compXSDef,
+			pa: {
+				Di: ipa.Di,
+				Q1: ipa.Q1,
+				H1: ipa.H1
 			},
-			stage2: {
-				component: compYSDef,
-				dparam: {
-					Di: ci.pa.Di,
-					T1: ci.pa.T1,
-					H1: ci.pa.H1
-				},
-				orientation: [0, 0, 0],
-				position: [0, 0, ci.pa.H1 + ci.pa.H2]
+			orientation: [0, 0, 0],
+			position: [0, 0, 0]
+		},
+		stage2: {
+			component: compYSDef,
+			pa: {
+				Di: ipa.Di,
+				T1: ipa.T1,
+				H1: ipa.H1
 			},
-			stage3: {
-				component: compZSDef,
-				dparam: {
-					Di: ci.pa.Di,
-					D3: ci.pa.D3,
-					H1: ci.pa.H1
-				},
-				orientation: [0, 0, 0],
-				position: [0, 0, 2 * (ci.pa.H1 + ci.pa.H2)]
-			}
+			orientation: [0, 0, 0],
+			position: [0, 0, ipa.H1 + ipa.H2]
+		},
+		stage3: {
+			component: compZSDef,
+			pa: {
+				Di: ipa.Di,
+				D3: ipa.D3,
+				H1: ipa.H1
+			},
+			orientation: [0, 0, 0],
+			position: [0, 0, 2 * (ipa.H1 + ipa.H2)]
 		}
 	};
-	rCO.metrics['weight'] = 53;
+	const osub = computeSubComp(isub);
+	// complete output
+	rCO.sub = isub;
+	rCO.metrics['weight'] =
+		osub.stage1.metrics.weight + osub.stage2.metrics.weight + osub.stage3.metrics.weight + 5;
 	return rCO;
 }
 

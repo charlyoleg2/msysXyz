@@ -6,14 +6,13 @@ import type { tParamVal, tCompIn } from 'systemix';
 
 // the parametrization
 const sysXyzParams: tParamVal = {
-	D1: 25,
+	Di: 25,
 	H1: 15
 };
 
 // inputs for compXyz
 const compXyzIn: tCompIn = {
 	instName: 'Xyz',
-	simtime: 0,
 	pa: sysXyzParams,
 	suffix: ''
 };

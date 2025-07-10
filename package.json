@@ -50,6 +50,7 @@
 		"ci": "run-s systemix:ci sysXyz:ci sysXyz-ui:ci sysXyz-cli:ci sysXyz-uis:ci",
 		"ci2": "run-s sysXyz:ci sysXyz-ui:ci",
 		"ci3": "run-s sysXyz:ci sysXyz-cli:ci",
+		"ci4": "run-s systemix:ci sysXyz:ci sysXyz-cli:ci",
 		"clean-root": "rimraf tmp output output2",
 		"clean-systemix": "run-s systemix:clean",
 		"clean-sysXyz": "run-s sysXyz:clean sysXyz-ui:clean sysXyz-cli:clean sysXyz-uis:clean",
