@@ -9,10 +9,13 @@ Presentation
 
 This monorepo contains the following *javascript* package:
 
-1. sysXyz: a *systemix* library for managing the system parameters
-2. sysXyz-cli: the cli of sysXyz
-3. sysXyz-ui: the web-ui of sysXyz
-4. sysXyz-uis: the web-server of sysXyz-ui
+1. systemix: the *systemix* library with its helper functions
+2. systemui: the helper library for making sysXyz-ui
+3. systemcli: the helper library for making sysXyz-cli
+4. sysXyz: a *systemix* library for managing the system parameters
+5. sysXyz-cli: the cli of sysXyz
+6. sysXyz-ui: the web-ui of sysXyz
+7. sysXyz-uis: the web-server of sysXyz-ui
 
 This repo is a typical systemix-repository using [systemix](https://charlyoleg2.github.io/systemix/).
 The systemix-library and its associated UI and CLI are published as *npm-packages*.
