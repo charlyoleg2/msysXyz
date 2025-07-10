@@ -69,13 +69,14 @@ export type {
 };
 export { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'geometrix';
 
-function combineParams(compDef: tParamDef, ci: tCompIn): tParamVal {
+function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string] {
+	let rLog = '';
 	// check default values from compDef
 	const coPa: tParamVal = {};
 	for (const pp of compDef.params) {
 		const nName = pp.name;
 		if (nName in coPa) {
-			console.log(`err070: compDef param ${nName} is already used`);
+			rLog += `err070: compDef param ${nName} is already used!\n`;
 		} else {
 			coPa[nName] = pp.init;
 		}
@@ -87,14 +88,15 @@ function combineParams(compDef: tParamDef, ci: tCompIn): tParamVal {
 		if (kk in coPa) {
 			coPa[kk] = ci.pa[kk];
 		} else {
-			console.log(`err081: ci-param ${kk} is not part of the component ${compDef.partName}`);
+			rLog += `err081: ci-param ${kk} is not part of the component ${compDef.partName}!\n`;
 		}
 	}
-	return coPa;
+	return [coPa, rLog];
 }
 
-function computeSubComp(instName: string, isub: tSubRecord): tSubORecord {
+function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string] {
 	const rSub: tSubORecord = {};
+	let rLog = '';
 	for (const kk in isub) {
 		const vv = isub[kk];
 		if (vv.component) {
@@ -102,12 +104,12 @@ function computeSubComp(instName: string, isub: tSubRecord): tSubORecord {
 			const ci: tCompIn = { instName: instN2, pa: vv.pa, suffix: '' };
 			const co = vv.component.compCompute(ci);
 			rSub[kk] = co;
-			console.log(`[csc ${kk}] ${co.logstr}`);
+			rLog += `[csc ${kk}] ${co.logstr}`;
 		} else {
-			console.log(`warn096: ${kk} has no assigned component!`);
+			rLog += `warn096: ${kk} has no assigned component!\n`;
 		}
 	}
-	return rSub;
+	return [rSub, rLog];
 }
 
 export { combineParams, computeSubComp };

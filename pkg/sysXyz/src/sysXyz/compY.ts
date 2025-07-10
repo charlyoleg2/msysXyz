@@ -35,13 +35,15 @@ const compDef: tParamDef = {
 };
 
 function compCompute(ci: tCompIn): tCompOut {
-	const ipa = combineParams(compDef, ci);
+	let rLog = `Component: ${compDef.partName} :: ${ci.instName}\n`;
+	const [ipa, ipaLog] = combineParams(compDef, ci);
+	rLog += ipaLog;
 	// prepare output
 	const rCO: tCompOut = {
 		partName: compDef.partName,
 		instanceName: ci.instName,
 		calcErr: false,
-		logstr: `Component: ${compDef.partName} :: ${ci.instName}`,
+		logstr: '',
 		metrics: {},
 		parametrix: {
 			url: 'https://charlyoleg2.github.io/parame76/desi76/compY',
@@ -66,9 +68,11 @@ function compCompute(ci: tCompIn): tCompOut {
 			position: [0, 0, ipa.H1 + ipa.H2]
 		}
 	};
-	const osub = computeSubComp(ci.instName, isub);
+	const [osub, log2] = computeSubComp(ci.instName, isub);
+	rLog += log2;
 	// complete output
 	rCO.metrics['weight'] = osub.refine.metrics.weight + 0.5;
+	rCO.logstr += rLog;
 	return rCO;
 }
 
