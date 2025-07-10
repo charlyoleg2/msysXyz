@@ -25,10 +25,10 @@
 <footer>
 	<h3>Links around Feli</h3>
 	<ol>
-		<li><a href="https://www.npmjs.com/package/feli">npm package</a></li>
-		<li><a href="https://www.npmjs.com/package/create-feli">npm package create</a></li>
-		<li><a href="https://github.com/charlyoleg2/feli_mono">Github</a></li>
-		<li><a href="https://charlyoleg2.github.io/feli_mono">Github pages</a></li>
+		<li><a href="https://www.npmjs.com/package/systemix">npm package</a></li>
+		<li><a href="https://www.npmjs.com/package/create-systemix">npm package create</a></li>
+		<li><a href="https://github.com/charlyoleg2/msysXyz">Github</a></li>
+		<li><a href="https://charlyoleg2.github.io/msysXyz">Github pages</a></li>
 	</ol>
 </footer>
 

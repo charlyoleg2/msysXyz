@@ -1,5 +1,5 @@
 ---
-title: Feli concepts
+title: Systemix concepts
 category: documentation
 ---
 
@@ -10,18 +10,6 @@ category: documentation
 
 # {title}
 
-## Concept around Feli
+## Presentation of Systemix
 
-A front-end-only web-app could be deployed on a CDN (like cloudflare) or could be installed locally.
-
-![feli_concept.svg]({base}/feli_concept.svg)
-
-A typical mono-repo of a *universal* javascript-library.
-
-![typical_monorepo.svg]({base}/typical_monorepo.svg)
-
-The *universal* Abc library can be:
-- used as API via importing a npm-package
-- imported and exposed in a CLI-tool
-- used and exposed in a web-UI deployed on a CDN
-- the web-UI can be also installed locally with the helper library **feli**
+*Systemix* is a framework for managing the parameters of a system.
