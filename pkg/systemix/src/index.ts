@@ -93,13 +93,16 @@ function combineParams(compDef: tParamDef, ci: tCompIn): tParamVal {
 	return coPa;
 }
 
-function computeSubComp(isub: tSubRecord): tSubORecord {
+function computeSubComp(instName: string, isub: tSubRecord): tSubORecord {
 	const rSub: tSubORecord = {};
 	for (const kk in isub) {
 		const vv = isub[kk];
 		if (vv.component) {
-			const ci: tCompIn = { instName: kk, pa: vv.pa, suffix: '' };
-			rSub[kk] = vv.component.compCompute(ci);
+			const instN2 = `${instName}/${kk}`;
+			const ci: tCompIn = { instName: instN2, pa: vv.pa, suffix: '' };
+			const co = vv.component.compCompute(ci);
+			rSub[kk] = co;
+			console.log(`[csc ${kk}] ${co.logstr}`);
 		} else {
 			console.log(`warn096: ${kk} has no assigned component!`);
 		}

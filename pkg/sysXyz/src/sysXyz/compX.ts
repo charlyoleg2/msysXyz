@@ -4,7 +4,7 @@
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef } from 'systemix';
 import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
-import { pNumber, pSectionSeparator } from 'systemix';
+import { pNumber, pSectionSeparator, combineParams } from 'systemix';
 
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
@@ -31,6 +31,8 @@ const compDef: tParamDef = {
 };
 
 function compCompute(ci: tCompIn): tCompOut {
+	const ipa = combineParams(compDef, ci);
+	// prepare output
 	const rCO: tCompOut = {
 		partName: compDef.partName,
 		instanceName: ci.instName,
@@ -46,7 +48,9 @@ function compCompute(ci: tCompIn): tCompOut {
 		},
 		sub: {}
 	};
-	rCO.metrics['weight'] = (ci.pa.Q1 - ci.pa.Di) * ci.pa.H1;
+	// define sub-components
+	// complete output
+	rCO.metrics['weight'] = (ipa.Q1 - ipa.Di) * ipa.H1;
 	return rCO;
 }
 

@@ -2,9 +2,10 @@
 // the component Y of the system Xyz
 
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef } from 'systemix';
-import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
+import type { tParamDef, tSubRecord, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
-import { pNumber, pDropdown, pSectionSeparator } from 'systemix';
+import { pNumber, pDropdown, pSectionSeparator, combineParams, computeSubComp } from 'systemix';
+
 import { compY2SDef } from './compY2';
 
 const compDef: tParamDef = {
@@ -34,6 +35,8 @@ const compDef: tParamDef = {
 };
 
 function compCompute(ci: tCompIn): tCompOut {
+	const ipa = combineParams(compDef, ci);
+	// prepare output
 	const rCO: tCompOut = {
 		partName: compDef.partName,
 		instanceName: ci.instName,
@@ -47,21 +50,25 @@ function compCompute(ci: tCompIn): tCompOut {
 			//objectDef?: compYDef,
 			pxJson: {}
 		},
-		sub: {
-			refine: {
-				component: compY2SDef,
-				pa: {
-					Di: ci.pa.Di,
-					T2: ci.pa.T2,
-					H1: ci.pa.H1,
-					N2: 3
-				},
-				orientation: [0, 0, 0],
-				position: [0, 0, ci.pa.H1 + ci.pa.H2]
-			}
+		sub: {}
+	};
+	// define sub-components
+	const isub: tSubRecord = {
+		refine: {
+			component: compY2SDef,
+			pa: {
+				Di: ipa.Di,
+				T2: ipa.T2,
+				H1: ipa.H1,
+				N2: 3
+			},
+			orientation: [0, 0, 0],
+			position: [0, 0, ipa.H1 + ipa.H2]
 		}
 	};
-	rCO.metrics['weight'] = 8;
+	const osub = computeSubComp(ci.instName, isub);
+	// complete output
+	rCO.metrics['weight'] = osub.refine.metrics.weight + 0.5;
 	return rCO;
 }
 

@@ -91,7 +91,7 @@ function compCompute(ci: tCompIn): tCompOut {
 			position: [0, 0, 2 * (ipa.H1 + ipa.H2)]
 		}
 	};
-	const osub = computeSubComp(isub);
+	const osub = computeSubComp(ci.instName, isub);
 	// complete output
 	rCO.sub = isub;
 	rCO.metrics['weight'] =
