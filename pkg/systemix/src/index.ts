@@ -3,3 +3,4 @@
 
 export * from './sysBase';
 export * from './sysHelper';
+export * from './sysBlob';
