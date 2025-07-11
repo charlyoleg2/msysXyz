@@ -37,8 +37,9 @@ interface tCompOut {
 	instanceName: string;
 	calcErr: boolean;
 	logstr: string;
+	pa: tParamVal;
 	metrics: tMetrics;
-	parametrix: {
+	parametrix?: {
 		url: string;
 		partName: string;
 		objectName: string;

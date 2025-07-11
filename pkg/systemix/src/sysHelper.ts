@@ -1,16 +1,18 @@
 // sysHelper.ts of systemix
 // the library for supporting calculation of system parameters
 
-import { tParamDef, tCompIn, tParamVal, tSubRecord, tSubORecord } from './sysBase';
+import type { tParamDef, tCompIn, tCompOut, tParamVal, tSubRecord, tSubORecord } from './sysBase';
 
-function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string] {
+function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string, boolean] {
 	let rLog = '';
+	let rErr = false;
 	// check default values from compDef
 	const coPa: tParamVal = {};
 	for (const pp of compDef.params) {
 		const nName = pp.name;
 		if (nName in coPa) {
 			rLog += `err070: compDef param ${nName} is already used!\n`;
+			rErr = true;
 		} else {
 			coPa[nName] = pp.init;
 		}
@@ -23,9 +25,27 @@ function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string] {
 			coPa[kk] = ci.pa[kk];
 		} else {
 			rLog += `err081: ci-param ${kk} is not part of the component ${compDef.partName}!\n`;
+			rErr = true;
 		}
 	}
-	return [coPa, rLog];
+	return [coPa, rLog, rErr];
+}
+
+function initCO(compDef: tParamDef, ci: tCompIn): tCompOut {
+	let rLog = `Component: ${compDef.partName} :: ${ci.instName}\n`;
+	const [ipa, ipaLog, iErr] = combineParams(compDef, ci);
+	rLog += ipaLog;
+	// prepare output
+	const rCO: tCompOut = {
+		partName: compDef.partName,
+		instanceName: ci.instName,
+		calcErr: iErr,
+		logstr: rLog,
+		pa: ipa,
+		metrics: {},
+		sub: {}
+	};
+	return rCO;
 }
 
 function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string] {
@@ -46,4 +66,4 @@ function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, strin
 	return [rSub, rLog];
 }
 
-export { combineParams, computeSubComp };
+export { combineParams, initCO, computeSubComp };

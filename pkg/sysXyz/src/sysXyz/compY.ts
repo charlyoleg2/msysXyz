@@ -4,7 +4,7 @@
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef } from 'systemix';
 import type { tParamDef, tSubRecord, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
-import { pNumber, pDropdown, pSectionSeparator, combineParams, computeSubComp } from 'systemix';
+import { pNumber, pDropdown, pSectionSeparator, initCO, computeSubComp } from 'systemix';
 
 import { compY2SDef } from './compY2';
 
@@ -35,44 +35,33 @@ const compDef: tParamDef = {
 };
 
 function compCompute(ci: tCompIn): tCompOut {
-	let rLog = `Component: ${compDef.partName} :: ${ci.instName}\n`;
-	const [ipa, ipaLog] = combineParams(compDef, ci);
-	rLog += ipaLog;
-	// prepare output
-	const rCO: tCompOut = {
-		partName: compDef.partName,
-		instanceName: ci.instName,
-		calcErr: false,
-		logstr: '',
-		metrics: {},
-		parametrix: {
-			url: 'https://charlyoleg2.github.io/parame76/desi76/compY',
-			partName: 'compY',
-			objectName: 'compYDef',
-			//objectDef?: compYDef,
-			pxJson: {}
-		},
-		sub: {}
+	const rCO = initCO(compDef, ci);
+	const pa = rCO.pa;
+	rCO.parametrix = {
+		url: 'https://charlyoleg2.github.io/parame76/desi76/compY',
+		partName: 'compY',
+		objectName: 'compYDef',
+		//objectDef?: compYDef,
+		pxJson: {}
 	};
 	// define sub-components
 	const isub: tSubRecord = {
 		refine: {
 			component: compY2SDef,
 			pa: {
-				Di: ipa.Di,
-				T2: ipa.T2,
-				H1: ipa.H1,
+				Di: pa.Di,
+				T2: pa.T2,
+				H1: pa.H1,
 				N2: 3
 			},
 			orientation: [0, 0, 0],
-			position: [0, 0, ipa.H1 + ipa.H2]
+			position: [0, 0, pa.H1 + pa.H2]
 		}
 	};
 	const [osub, log2] = computeSubComp(ci.instName, isub);
-	rLog += log2;
+	rCO.logstr += log2;
 	// complete output
 	rCO.metrics['weight'] = osub.refine.metrics.weight + 0.5;
-	rCO.logstr += rLog;
 	return rCO;
 }
 

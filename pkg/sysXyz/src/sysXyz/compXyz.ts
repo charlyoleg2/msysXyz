@@ -50,6 +50,7 @@ function compCompute(ci: tCompIn): tCompOut {
 		instanceName: ci.instName,
 		calcErr: false,
 		logstr: '',
+		pa: {},
 		metrics: {},
 		parametrix: {
 			url: 'https://charlyoleg2.github.io/parame76/desi76/compXyz',
