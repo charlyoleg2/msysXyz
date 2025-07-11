@@ -4,7 +4,7 @@
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef } from 'systemix';
 import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
-import { pNumber, pSectionSeparator, combineParams } from 'systemix';
+import { pNumber, pSectionSeparator, initCO } from 'systemix';
 
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
@@ -31,30 +31,18 @@ const compDef: tParamDef = {
 };
 
 function compCompute(ci: tCompIn): tCompOut {
-	let rLog = `Component: ${compDef.partName} :: ${ci.instName}\n`;
-	const [ipa, ipaLog] = combineParams(compDef, ci);
-	rLog += ipaLog;
-	// prepare output
-	const rCO: tCompOut = {
-		partName: compDef.partName,
-		instanceName: ci.instName,
-		calcErr: false,
-		logstr: '',
-		pa: {},
-		metrics: {},
-		parametrix: {
-			url: 'https://charlyoleg2.github.io/parame76/desi76/compX',
-			partName: 'compX',
-			objectName: 'compXDef',
-			//objectDef?: compXDef,
-			pxJson: {}
-		},
-		sub: {}
+	const rCO = initCO(compDef, ci);
+	const pa = rCO.pa;
+	rCO.parametrix = {
+		url: 'https://charlyoleg2.github.io/parame76/desi76/compX',
+		partName: 'compX',
+		objectName: 'compXDef',
+		//objectDef?: compXDef,
+		pxJson: {}
 	};
 	// define sub-components
 	// complete output
-	rCO.metrics['weight'] = (ipa.Q1 - ipa.Di) * ipa.H1;
-	rCO.logstr += rLog;
+	rCO.metrics['weight'] = (pa.Q1 - pa.Di) * pa.H1;
 	return rCO;
 }
 

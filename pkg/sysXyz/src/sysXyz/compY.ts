@@ -61,6 +61,7 @@ function compCompute(ci: tCompIn): tCompOut {
 	const [osub, log2] = computeSubComp(ci.instName, isub);
 	rCO.logstr += log2;
 	// complete output
+	rCO.sub = isub;
 	rCO.metrics['weight'] = osub.refine.metrics.weight + 0.5;
 	return rCO;
 }

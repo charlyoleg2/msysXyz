@@ -4,7 +4,7 @@
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef } from 'systemix';
 import type { tParamDef, tSubRecord, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
-import { pNumber, pDropdown, pSectionSeparator, combineParams, computeSubComp } from 'systemix';
+import { pNumber, pDropdown, pSectionSeparator, initCO, computeSubComp } from 'systemix';
 
 import { compXSDef } from './compX';
 import { compYSDef } from './compY';
@@ -41,34 +41,23 @@ const compDef: tParamDef = {
 };
 
 function compCompute(ci: tCompIn): tCompOut {
-	let rLog = `Component: ${compDef.partName} :: ${ci.instName}\n`;
-	const [ipa, ipaLog] = combineParams(compDef, ci);
-	rLog += ipaLog;
-	// prepare output
-	const rCO: tCompOut = {
-		partName: compDef.partName,
-		instanceName: ci.instName,
-		calcErr: false,
-		logstr: '',
-		pa: {},
-		metrics: {},
-		parametrix: {
-			url: 'https://charlyoleg2.github.io/parame76/desi76/compXyz',
-			partName: 'compXyz',
-			objectName: 'compXyzDef',
-			//objectDef?: compXyzDef,
-			pxJson: {}
-		},
-		sub: {}
+	const rCO = initCO(compDef, ci);
+	const pa = rCO.pa;
+	rCO.parametrix = {
+		url: 'https://charlyoleg2.github.io/parame76/desi76/compXyz',
+		partName: 'compXyz',
+		objectName: 'compXyzDef',
+		//objectDef?: compXyzDef,
+		pxJson: {}
 	};
 	// define sub-components
 	const isub: tSubRecord = {
 		stage1: {
 			component: compXSDef,
 			pa: {
-				Di: ipa.Di,
-				Q1: ipa.Q1,
-				H1: ipa.H1
+				Di: pa.Di,
+				Q1: pa.Q1,
+				H1: pa.H1
 			},
 			orientation: [0, 0, 0],
 			position: [0, 0, 0]
@@ -76,31 +65,30 @@ function compCompute(ci: tCompIn): tCompOut {
 		stage2: {
 			component: compYSDef,
 			pa: {
-				Di: ipa.Di,
-				T2: ipa.T2,
-				H1: ipa.H1
+				Di: pa.Di,
+				T2: pa.T2,
+				H1: pa.H1
 			},
 			orientation: [0, 0, 0],
-			position: [0, 0, ipa.H1 + ipa.H2]
+			position: [0, 0, pa.H1 + pa.H2]
 		},
 		stage3: {
 			component: compZSDef,
 			pa: {
-				Di: ipa.Di,
-				D3: ipa.D3,
-				H1: ipa.H1
+				Di: pa.Di,
+				D3: pa.D3,
+				H1: pa.H1
 			},
 			orientation: [0, 0, 0],
-			position: [0, 0, 2 * (ipa.H1 + ipa.H2)]
+			position: [0, 0, 2 * (pa.H1 + pa.H2)]
 		}
 	};
 	const [osub, log2] = computeSubComp(ci.instName, isub);
-	rLog += log2;
+	rCO.logstr += log2;
 	// complete output
 	rCO.sub = isub;
 	rCO.metrics['weight'] =
 		osub.stage1.metrics.weight + osub.stage2.metrics.weight + osub.stage3.metrics.weight + 5;
-	rCO.logstr += rLog;
 	return rCO;
 }
 
