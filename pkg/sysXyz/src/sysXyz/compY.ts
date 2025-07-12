@@ -37,32 +37,55 @@ const compDef: tParamDef = {
 function compCompute(ci: tCompIn): tCompOut {
 	const rCO = initCO(compDef, ci);
 	const pa = rCO.pa;
-	rCO.parametrix = {
-		url: 'https://charlyoleg2.github.io/parame76/desi76/compY',
-		partName: 'compY',
-		objectName: 'compYDef',
-		//objectDef?: compYDef,
-		pxJson: {}
-	};
-	// define sub-components
-	const isub: tSubRecord = {
-		refine: {
-			component: compY2SDef,
-			pa: {
-				Di: pa.Di,
-				T2: pa.T2,
-				H1: pa.H1,
-				N2: 3
-			},
-			orientation: [0, 0, 0],
-			position: [0, 0, pa.H1 + pa.H2]
-		}
-	};
-	const [osub, log2] = computeSubComp(ci.instName, isub);
-	rCO.logstr += log2;
-	// complete output
-	rCO.sub = isub;
-	rCO.metrics['weight'] = osub.refine.metrics.weight + 0.5;
+	if (pa.stage2 === 0) {
+		rCO.parametrix = {
+			url: 'https://charlyoleg2.github.io/parame77/desi77/square',
+			partName: 'square',
+			objectName: 'square',
+			//objectDef?: squareDef,
+			pxJson: {}
+		};
+		rCO.metrics['weight'] = pa.T2 + 2.5;
+	} else if (pa.stage2 === 1) {
+		rCO.parametrix = {
+			url: 'https://charlyoleg2.github.io/parame77/desi77/triangle',
+			partName: 'triangle',
+			objectName: 'triangleDef',
+			//objectDef?: triangleDef,
+			pxJson: {}
+		};
+		// define sub-components
+		const isub: tSubRecord = {
+			refine: {
+				component: compY2SDef,
+				pa: {
+					Di: pa.Di,
+					T2: pa.T2,
+					H1: pa.H1,
+					N2: 3
+				},
+				orientation: [0, 0, 0],
+				position: [0, 0, pa.H1 + pa.H2]
+			}
+		};
+		const [osub, log2] = computeSubComp(ci.instName, isub);
+		rCO.logstr += log2;
+		// complete output
+		rCO.sub = isub;
+		rCO.metrics['weight'] = osub.refine.metrics.weight + 0.5;
+	} else if (pa.stage2 === 2) {
+		rCO.parametrix = {
+			url: 'https://charlyoleg2.github.io/parame77/desi77/cylinder',
+			partName: 'cylinder',
+			objectName: 'cylinder',
+			//objectDef?: cylinderDef,
+			pxJson: {}
+		};
+		rCO.metrics['weight'] = pa.T2 + 3.5;
+	} else {
+		rCO.calcErr = true;
+		rCO.logstr += `err071: compY param stage2 ${pa.stage2} is out of range`;
+	}
 	return rCO;
 }
 

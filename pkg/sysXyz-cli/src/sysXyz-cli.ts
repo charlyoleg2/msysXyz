@@ -7,6 +7,7 @@ import { compXyzIn } from 'sysXyz';
 
 // compute the component compXyz
 const compXyzOut = compXyzSDef.compCompute(compXyzIn);
+console.log(`[top-level err] ${compXyzOut.calcErr}`);
 console.log(`[top-level log] ${compXyzOut.logstr}`);
 
 // Use some results
