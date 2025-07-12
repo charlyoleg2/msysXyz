@@ -59,6 +59,7 @@ function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, strin
 			const co = vv.component.compCompute(ci);
 			rSub[kk] = co;
 			rLog += `[csc ${kk}] ${co.logstr}`;
+			rLog += co.logstr;
 		} else {
 			rLog += `warn096: ${kk} has no assigned component!\n`;
 		}

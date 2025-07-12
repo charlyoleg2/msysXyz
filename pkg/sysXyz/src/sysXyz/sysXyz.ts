@@ -18,7 +18,7 @@ const compXyzIn: tCompIn = {
 };
 
 // compute the component compXyz
-//const compXyzOut = compXyzSDef.compCompute('Xyz', 0, sysXyzParams);
+//const compXyzOut = compXyzSDef.compCompute(compXyzIn);
 
 // Use some results
 //console.log(`sysXyz metrics: weight: ${compXyzOut.metrics.weight} kg`);
