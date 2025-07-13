@@ -1,0 +1,15 @@
+{
+	"entryPoints": ["pkg/systemix"],
+	"name": "Systemix & Co",
+	"entryPointStrategy": "packages",
+	"out": "build/apidoc",
+	"navigationLinks": {
+		"systemix-pkg": "https://www.npmjs.com/package/systemix",
+		"systemui-pkg": "https://www.npmjs.com/package/systemui",
+		"systemcli-pkg": "https://www.npmjs.com/package/systemcli",
+		"Sources": "https://github.com/charlyoleg2/sysXyz",
+		"API": "https://charlyoleg2.github.io/sysXyz/apidoc/",
+		"Examples": "https://charlyoleg2.github.io/sysXyz/"
+	},
+	"includeVersion": false
+}

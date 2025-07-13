@@ -47,7 +47,7 @@
 		"sysXyz-uis:clean": "npm -w sysXyz-uis run clean",
 		"sysXyz-uis:version": "npm -w sysXyz-uis version patch",
 		"sysXyz-uis:publish": "npm -w sysXyz-uis publish --provenance",
-		"ci": "run-s systemix:ci sysXyz:ci sysXyz-ui:ci sysXyz-cli:ci sysXyz-uis:ci",
+		"ci": "run-s systemix:ci sysXyz:ci sysXyz-ui:ci sysXyz-cli:ci sysXyz-uis:ci apidoc",
 		"ci2": "run-s sysXyz:ci sysXyz-ui:ci",
 		"ci3": "run-s sysXyz:ci sysXyz-cli:ci",
 		"ci4": "run-s systemix:ci sysXyz:ci sysXyz-cli:ci",
@@ -61,10 +61,18 @@
 		"versions": "run-s systemix:version sysXyz:version sysXyz-ui:version sysXyz-cli:version sysXyz-uis:version",
 		"gh-publish": "run-s systemix:publish",
 		"gh-publish2": "run-s sysXyz:publish sysXyz-cli:publish sysXyz-uis:publish",
+		"gen_apidoc": "typedoc",
+		"cp_apidoc": "fse copy build/apidoc pkg/sysXyz-ui/build/apidoc",
+		"apidoc": "run-s gen_apidoc cp_apidoc",
+		"serve_apidoc": "serve build/apidoc",
+		"serve_ui": "serve pkg/sysXyz-ui/build",
 		"ls-workspaces": "npm -ws exec -c pwd"
 	},
 	"devDependencies": {
+		"@atao60/fse-cli": "^0.1.9",
 		"npm-run-all2": "^8.0.4",
-		"rimraf": "^6.0.1"
+		"rimraf": "^6.0.1",
+		"serve": "^14.2.4",
+		"typedoc": "^0.28.7"
 	}
 }
