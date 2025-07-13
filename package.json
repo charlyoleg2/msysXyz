@@ -62,7 +62,7 @@
 		"gh-publish": "run-s systemix:publish",
 		"gh-publish2": "run-s sysXyz:publish sysXyz-cli:publish sysXyz-uis:publish",
 		"gen_apidoc": "typedoc",
-		"cp_apidoc": "fse copy build/apidoc pkg/sysXyz-ui/build/apidoc",
+		"cp_apidoc": "fse copy build/apidoc pkg/sysXyz-ui/build/docs/apidoc",
 		"apidoc": "run-s gen_apidoc cp_apidoc",
 		"serve_apidoc": "serve build/apidoc",
 		"serve_ui": "serve pkg/sysXyz-ui/build",
