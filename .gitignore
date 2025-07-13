@@ -1,3 +1,4 @@
 # .gitignore of systemix_root
 node_modules/
 output/
+build/

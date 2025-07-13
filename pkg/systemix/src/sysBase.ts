@@ -61,6 +61,9 @@ interface tComponentDef {
 export type {
 	tParamDef,
 	tParamVal,
+	tVec3,
+	tMetrics,
+	tSubComp,
 	tSubRecord,
 	tSubORecord,
 	tCompIn,

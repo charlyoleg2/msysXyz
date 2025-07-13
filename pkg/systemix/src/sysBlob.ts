@@ -27,4 +27,5 @@ class sysBlob {
 
 const sBlob = new sysBlob();
 
+export type { tBlob, sysBlob };
 export { sBlob };
