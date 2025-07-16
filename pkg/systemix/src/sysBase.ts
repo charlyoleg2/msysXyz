@@ -32,6 +32,13 @@ interface tCompIn {
 	pa: tParamVal;
 	suffix?: string;
 }
+interface tParametrix {
+	url: string;
+	partName: string;
+	objectName: string;
+	objectDef?: tPageDef;
+	pxJson: tParamVal;
+}
 interface tCompOut {
 	partName: string;
 	instName: string;
@@ -39,13 +46,7 @@ interface tCompOut {
 	logstr: string;
 	pa: tParamVal;
 	metrics: tMetrics;
-	parametrix?: {
-		url: string;
-		partName: string;
-		objectName: string;
-		objectDef?: tPageDef;
-		pxJson: tParamVal;
-	};
+	parametrix?: tParametrix;
 	sub: tSubRecord;
 }
 type tCompCompFunc = (compIn: tCompIn) => tCompOut;
@@ -66,6 +67,7 @@ export type {
 	tSubComp,
 	tSubRecord,
 	tSubORecord,
+	tParametrix,
 	tCompIn,
 	tCompOut,
 	tCompCompFunc,

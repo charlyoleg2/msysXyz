@@ -1,7 +1,15 @@
 // sysHelper.ts of systemix
 // the library for supporting calculation of system parameters
 
-import type { tParamDef, tCompIn, tCompOut, tParamVal, tSubRecord, tSubORecord } from './sysBase';
+import type {
+	tParamDef,
+	tParametrix,
+	tCompIn,
+	tCompOut,
+	tParamVal,
+	tSubRecord,
+	tSubORecord
+} from './sysBase';
 import { sBlob } from './sysBlob';
 
 function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string, boolean] {
@@ -57,11 +65,24 @@ function enhanceInstName(instName: string): string {
 	return rName;
 }
 
+function makePxJson(pax: tParametrix): string {
+	const rJson = {
+		lastModif: '20250715_220201',
+		partName: pax.partName,
+		pVal: pax.pxJson,
+		comment: 'written by systemix'
+	};
+	return JSON.stringify(rJson, null, 2);
+}
+
 function generateOutputFiles(instName: string, co: tCompOut) {
 	const eInstName = enhanceInstName(instName);
 	//console.log(`dbg062: eInstName ${eInstName}`);
 	sBlob.saveBlob(`log_${eInstName}.txt`, co.logstr);
-	sBlob.listNames();
+	if (co.parametrix) {
+		sBlob.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
+	}
+	//sBlob.listNames();
 }
 
 function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string, boolean] {
