@@ -61,6 +61,7 @@ function generateOutputFiles(instName: string, co: tCompOut) {
 	const eInstName = enhanceInstName(instName);
 	//console.log(`dbg062: eInstName ${eInstName}`);
 	sBlob.saveBlob(`log_${eInstName}.txt`, co.logstr);
+	sBlob.listNames();
 }
 
 function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string, boolean] {
