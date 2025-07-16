@@ -6,6 +6,7 @@ import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
 import { pNumber, pSectionSeparator, initCO } from 'systemix';
 
+// step10: defintion of component parameters
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
 	partName: 'compY2',
@@ -32,22 +33,42 @@ const compDef: tParamDef = {
 	}
 };
 
+// step20: function definiton of compute component
 function compCompute(ci: tCompIn): tCompOut {
 	const rCO = initCO(compDef, ci);
 	const pa = rCO.pa;
+	// step21: compute intermediate parameters (pre-calculation)
+	const vH1 = pa.H1 / (1 + 2 * (pa.N2 - 1));
+	// step22: check parameters
+	if (vH1 < 1.0) {
+		throw `err044: vH1 ${vH1} is too small`;
+	}
+	// step23: log
+	rCO.logstr += `vH1: ${vH1} mm, N2: ${pa.N2}`;
+	// step24: optional parametrix view
 	rCO.parametrix = {
-		url: 'https://charlyoleg2.github.io/parame76/desi76/compY',
-		partName: 'compY2',
-		objectName: 'compY2Def',
-		//objectDef?: compY2Def,
-		pxJson: {}
+		url: 'https://charlyoleg2.github.io/parame77/desi77/triangle',
+		partName: 'triangle',
+		objectName: 'triangleDef',
+		//objectDef?: triangleDef,
+		pxJson: {
+			W1: pa.T2,
+			R1: pa.R2,
+			T1: vH1,
+			E1: vH1,
+			N1: pa.N2,
+			Di: pa.Di
+		}
 	};
-	// define sub-components
-	// complete output
+	// step25: optional sub-components definition
+	// step26: compute sub-components
+	// step27: compute metrics (post-calculation)
 	rCO.metrics['weight'] = ((pa.T2 - pa.Di) * pa.H1) / pa.N2;
+	// step28: return component output
 	return rCO;
 }
 
+// step30: component definition
 const compY2SDef: tComponentDef = {
 	compName: compDef.partName,
 	compDescription: 'compY2 is the detailed component of compY',

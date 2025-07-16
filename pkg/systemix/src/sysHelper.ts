@@ -28,6 +28,7 @@ function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string, boo
 			rErr = true;
 		}
 	}
+	rLog += `info031: ${compDef.partName} ${Object.keys(coPa).length} parameters, overwritten: ${Object.keys(ci.pa).length}`;
 	return [coPa, rLog, rErr];
 }
 
@@ -48,23 +49,30 @@ function initCO(compDef: tParamDef, ci: tCompIn): tCompOut {
 	return rCO;
 }
 
-function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string] {
+function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string, boolean] {
 	const rSub: tSubORecord = {};
 	let rLog = '';
+	let rErr = false;
 	for (const kk in isub) {
 		const vv = isub[kk];
 		if (vv.component) {
 			const instN2 = `${instName}/${kk}`;
 			const ci: tCompIn = { instName: instN2, pa: vv.pa, suffix: '' };
-			const co = vv.component.compCompute(ci);
-			rSub[kk] = co;
-			rLog += `[csc ${kk}] ${co.logstr}`;
-			rLog += co.logstr;
+			rLog += `[csc ${kk}] ${instN2}\n`;
+			try {
+				const co = vv.component.compCompute(ci);
+				rSub[kk] = co;
+				rLog += co.logstr;
+			} catch (eMsg) {
+				rLog += `err065: Error while computing sub-component ${instN2}\n`;
+				rLog += eMsg;
+				rErr = true;
+			}
 		} else {
 			rLog += `warn096: ${kk} has no assigned component!\n`;
 		}
 	}
-	return [rSub, rLog];
+	return [rSub, rLog, rErr];
 }
 
 export { combineParams, initCO, computeSubComp };

@@ -10,6 +10,7 @@ import { compXSDef } from './compX';
 import { compYSDef } from './compY';
 import { compZSDef } from './compZ';
 
+// step10: defintion of component parameters
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
 	partName: 'compXyz',
@@ -40,17 +41,29 @@ const compDef: tParamDef = {
 	}
 };
 
+// step20: function definiton of compute component
 function compCompute(ci: tCompIn): tCompOut {
 	const rCO = initCO(compDef, ci);
 	const pa = rCO.pa;
-	rCO.parametrix = {
-		url: 'https://charlyoleg2.github.io/parame76/desi76/compXyz',
-		partName: 'compXyz',
-		objectName: 'compXyzDef',
-		//objectDef?: compXyzDef,
-		pxJson: {}
-	};
-	// define sub-components
+	// step21: compute intermediate parameters (pre-calculation)
+	const Zoffset = pa.H1 + pa.H2;
+	const Wmax = Math.max(pa.Q1, pa.T2, pa.D3);
+	const Wmin = Math.min(pa.Q1, pa.T2, pa.D3);
+	// step22: check parameters
+	if (Wmin < pa.Di) {
+		throw `err052: Wmin ${Wmin} is smaller than Di ${pa.Di}`;
+	}
+	// step23: log
+	rCO.logstr += `Wmax: ${Wmax}, Wmin: ${Wmin}, Di: ${pa.Di} mm`;
+	// step24: optional parametrix view
+	//rCO.parametrix = {
+	//	url: 'https://charlyoleg2.github.io/parame77/desi77/compXyz',
+	//	partName: 'compXyz',
+	//	objectName: 'compXyzDef',
+	//	//objectDef?: compXyzDef,
+	//	pxJson: {}
+	//};
+	// step25: optional sub-components definition
 	const isub: tSubRecord = {
 		stage1: {
 			component: compXSDef,
@@ -68,10 +81,10 @@ function compCompute(ci: tCompIn): tCompOut {
 				Di: pa.Di,
 				T2: pa.T2,
 				H1: pa.H1,
-				stage2: 1
+				stage2: pa.stage2
 			},
 			orientation: [0, 0, 0],
-			position: [0, 0, pa.H1 + pa.H2]
+			position: [0, 0, Zoffset]
 		},
 		stage3: {
 			component: compZSDef,
@@ -81,18 +94,22 @@ function compCompute(ci: tCompIn): tCompOut {
 				H1: pa.H1
 			},
 			orientation: [0, 0, 0],
-			position: [0, 0, 2 * (pa.H1 + pa.H2)]
+			position: [0, 0, 2 * Zoffset]
 		}
 	};
-	const [osub, log2] = computeSubComp(ci.instName, isub);
-	rCO.logstr += log2;
-	// complete output
 	rCO.sub = isub;
+	// step26: compute sub-components
+	const [osub, log2, err2] = computeSubComp(ci.instName, isub);
+	rCO.logstr += log2;
+	rCO.calcErr ||= err2;
+	// step27: compute metrics (post-calculation)
 	rCO.metrics['weight'] =
 		osub.stage1.metrics.weight + osub.stage2.metrics.weight + osub.stage3.metrics.weight + 5;
+	// step28: return component output
 	return rCO;
 }
 
+// step30: component definition
 const compXyzSDef: tComponentDef = {
 	compName: compDef.partName,
 	compDescription: 'compXyz is an alignment of three shapes',

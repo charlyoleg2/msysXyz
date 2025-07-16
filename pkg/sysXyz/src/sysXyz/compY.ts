@@ -8,6 +8,7 @@ import { pNumber, pDropdown, pSectionSeparator, initCO, computeSubComp } from 's
 
 import { compY2SDef } from './compY2';
 
+// step10: defintion of component parameters
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
 	partName: 'compY',
@@ -34,9 +35,21 @@ const compDef: tParamDef = {
 	}
 };
 
+// step20: function definiton of compute component
 function compCompute(ci: tCompIn): tCompOut {
 	const rCO = initCO(compDef, ci);
 	const pa = rCO.pa;
+	// step21: compute intermediate parameters (pre-calculation)
+	// step22: check parameters
+	if (pa.stage2 > 2) {
+		throw `err045: stage2 ${pa.stage2} is out of range`;
+	}
+	// step23: log
+	rCO.logstr += `stage2: ${pa.stage2}: [0: square, 1: triangle, 2: cylinder]`;
+	// step24: optional parametrix view
+	// step25: optional sub-components definition
+	// step26: compute sub-components
+	// step27: compute metrics (post-calculation)
 	if (pa.stage2 === 0) {
 		rCO.parametrix = {
 			url: 'https://charlyoleg2.github.io/parame77/desi77/square',
@@ -68,8 +81,9 @@ function compCompute(ci: tCompIn): tCompOut {
 				position: [0, 0, pa.H1 + pa.H2]
 			}
 		};
-		const [osub, log2] = computeSubComp(ci.instName, isub);
+		const [osub, log2, err2] = computeSubComp(ci.instName, isub);
 		rCO.logstr += log2;
+		rCO.calcErr ||= err2;
 		// complete output
 		rCO.sub = isub;
 		rCO.metrics['weight'] = osub.refine.metrics.weight + 0.5;
@@ -86,9 +100,11 @@ function compCompute(ci: tCompIn): tCompOut {
 		rCO.calcErr = true;
 		rCO.logstr += `err071: compY param stage2 ${pa.stage2} is out of range`;
 	}
+	// step28: return component output
 	return rCO;
 }
 
+// step30: component definition
 const compYSDef: tComponentDef = {
 	compName: compDef.partName,
 	compDescription: 'compY is the shape of the stage 2',

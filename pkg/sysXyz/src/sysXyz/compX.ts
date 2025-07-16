@@ -6,6 +6,7 @@ import type { tParamDef, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
 import { pNumber, pSectionSeparator, initCO } from 'systemix';
 
+// step10: defintion of component parameters
 const compDef: tParamDef = {
 	// partName is used in URL. Choose a name without slash, backslash and space.
 	partName: 'compX',
@@ -30,9 +31,14 @@ const compDef: tParamDef = {
 	}
 };
 
+// step20: function definiton of compute component
 function compCompute(ci: tCompIn): tCompOut {
 	const rCO = initCO(compDef, ci);
 	const pa = rCO.pa;
+	// step21: compute intermediate parameters (pre-calculation)
+	// step22: check parameters
+	// step23: log
+	// step24: optional parametrix view
 	rCO.parametrix = {
 		url: 'https://charlyoleg2.github.io/parame76/desi76/compX',
 		partName: 'compX',
@@ -40,12 +46,15 @@ function compCompute(ci: tCompIn): tCompOut {
 		//objectDef?: compXDef,
 		pxJson: {}
 	};
-	// define sub-components
-	// complete output
+	// step25: optional sub-components definition
+	// step26: compute sub-components
+	// step27: compute metrics (post-calculation)
 	rCO.metrics['weight'] = (pa.Q1 - pa.Di) * pa.H1;
+	// step28: return component output
 	return rCO;
 }
 
+// step30: component definition
 const compXSDef: tComponentDef = {
 	compName: compDef.partName,
 	compDescription: 'compX is the shape of the stage-1',
