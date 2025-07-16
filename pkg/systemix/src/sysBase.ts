@@ -34,7 +34,7 @@ interface tCompIn {
 }
 interface tCompOut {
 	partName: string;
-	instanceName: string;
+	instName: string;
 	calcErr: boolean;
 	logstr: string;
 	pa: tParamVal;

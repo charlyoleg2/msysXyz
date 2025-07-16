@@ -2,6 +2,7 @@
 // the library for supporting calculation of system parameters
 
 import type { tParamDef, tCompIn, tCompOut, tParamVal, tSubRecord, tSubORecord } from './sysBase';
+import { sBlob } from './sysBlob';
 
 function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string, boolean] {
 	let rLog = '';
@@ -39,7 +40,7 @@ function initCO(compDef: tParamDef, ci: tCompIn): tCompOut {
 	// prepare output
 	const rCO: tCompOut = {
 		partName: compDef.partName,
-		instanceName: ci.instName,
+		instName: ci.instName,
 		calcErr: iErr,
 		logstr: rLog,
 		pa: ipa,
@@ -47,6 +48,17 @@ function initCO(compDef: tParamDef, ci: tCompIn): tCompOut {
 		sub: {}
 	};
 	return rCO;
+}
+
+function enhanceInstName(instName: string): string {
+	const regex = /\[\\,\/\]/;
+	const rName = instName.replaceAll(regex, '_');
+	return rName;
+}
+
+function generateOutputFiles(instName: string, co: tCompOut) {
+	const eInstName = enhanceInstName(instName);
+	sBlob.saveBlob(`${eInstName}_log.txt`, co.logstr);
 }
 
 function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string, boolean] {
@@ -61,6 +73,7 @@ function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, strin
 			rLog += `[csc ${kk}] ${instN2}\n`;
 			try {
 				const co = vv.component.compCompute(ci);
+				generateOutputFiles(instN2, co);
 				rSub[kk] = co;
 				rLog += co.logstr;
 			} catch (eMsg) {
@@ -75,4 +88,4 @@ function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, strin
 	return [rSub, rLog, rErr];
 }
 
-export { combineParams, initCO, computeSubComp };
+export { combineParams, initCO, computeSubComp, generateOutputFiles };
