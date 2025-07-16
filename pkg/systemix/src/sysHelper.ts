@@ -67,8 +67,13 @@ function enhanceInstName(instName: string): string {
 }
 
 function makePxJson(pax: tParametrix): string {
+	const lastModif = new Date()
+		.toISOString()
+		.replace(/\..*$/, '')
+		.replaceAll(/[-:]/g, '')
+		.replaceAll('T', '_');
 	const rJson = {
-		lastModif: '20250715_220201',
+		lastModif: lastModif,
 		partName: pax.partName,
 		pVal: pax.pxJson,
 		comment: 'written by systemix'
