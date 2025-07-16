@@ -4,9 +4,13 @@
 
 import { compXyzSDef } from 'sysXyz';
 import { compXyzIn } from 'sysXyz';
-import { generateOutputFiles, sBlob } from 'systemix';
+import { generateOutputFiles, sysBlob } from 'systemix';
 import { writeOutputFiles } from './systemcli';
 
+// instanciate the single reference to SysBlob
+const sBlob = sysBlob();
+
+// compute the system
 try {
 	// compute the component compXyz
 	const compXyzOut = compXyzSDef.compCompute(compXyzIn, sBlob);
