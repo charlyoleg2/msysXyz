@@ -1,6 +1,7 @@
 // systemcli.ts
 // the library for helping creating a systemix cli
 
+import path from 'node:path';
 import fs from 'node:fs/promises';
 import { sBlob } from 'systemix';
 
@@ -14,13 +15,14 @@ async function writeOneTxtFile(iFileName: string, iFileBlob: string) {
 
 async function writeOutputFiles(outDirName: string) {
 	try {
-		const createDir = await fs.mkdir(outDirName, { recursive: true });
-		console.log(`The directory ${createDir} is created`);
+		await fs.mkdir(outDirName, { recursive: true });
+		console.log(`The directory ${outDirName} is created`);
 	} catch (err) {
 		console.error(err);
 	}
 	for (const blob of sBlob.getBlobs()) {
-		await writeOneTxtFile(blob.fName, blob.fBlob);
+		const fPath = path.join(outDirName, blob.fName);
+		await writeOneTxtFile(fPath, blob.fBlob);
 	}
 }
 

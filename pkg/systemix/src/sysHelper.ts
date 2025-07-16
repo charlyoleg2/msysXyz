@@ -51,14 +51,15 @@ function initCO(compDef: tParamDef, ci: tCompIn): tCompOut {
 }
 
 function enhanceInstName(instName: string): string {
-	const regex = /\[\\,\/\]/;
+	const regex = /\[\\,\/\]/g;
+	//const regex = /\//g;
 	const rName = instName.replaceAll(regex, '_');
 	return rName;
 }
 
 function generateOutputFiles(instName: string, co: tCompOut) {
 	const eInstName = enhanceInstName(instName);
-	sBlob.saveBlob(`${eInstName}_log.txt`, co.logstr);
+	sBlob.saveBlob(`log_${eInstName}.txt`, co.logstr);
 }
 
 function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string, boolean] {
@@ -73,7 +74,7 @@ function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, strin
 			rLog += `[csc ${kk}] ${instN2}\n`;
 			try {
 				const co = vv.component.compCompute(ci);
-				generateOutputFiles(instN2, co);
+				//generateOutputFiles(instN2, co);
 				rSub[kk] = co;
 				rLog += co.logstr;
 			} catch (eMsg) {
