@@ -44,7 +44,7 @@ function compCompute(ci: tCompIn): tCompOut {
 		throw `err044: vH1 ${vH1} is too small`;
 	}
 	// step23: log
-	rCO.logstr += `vH1: ${vH1} mm, N2: ${pa.N2}`;
+	rCO.logstr += `vH1: ${vH1} mm, N2: ${pa.N2}\n`;
 	// step24: optional parametrix view
 	rCO.parametrix = {
 		url: 'https://charlyoleg2.github.io/parame77/desi77/triangle',

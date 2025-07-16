@@ -28,7 +28,7 @@ function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string, boo
 			rErr = true;
 		}
 	}
-	rLog += `info031: ${compDef.partName} ${Object.keys(coPa).length} parameters, overwritten: ${Object.keys(ci.pa).length}`;
+	rLog += `info031: ${compDef.partName} ${Object.keys(coPa).length} parameters, overwritten: ${Object.keys(ci.pa).length}\n`;
 	return [coPa, rLog, rErr];
 }
 

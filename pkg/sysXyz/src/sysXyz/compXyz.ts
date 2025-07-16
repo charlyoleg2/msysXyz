@@ -54,7 +54,7 @@ function compCompute(ci: tCompIn): tCompOut {
 		throw `err052: Wmin ${Wmin} is smaller than Di ${pa.Di}`;
 	}
 	// step23: log
-	rCO.logstr += `Wmax: ${Wmax}, Wmin: ${Wmin}, Di: ${pa.Di} mm`;
+	rCO.logstr += `Wmax: ${Wmax}, Wmin: ${Wmin}, Di: ${pa.Di} mm\n`;
 	// step24: optional parametrix view
 	//rCO.parametrix = {
 	//	url: 'https://charlyoleg2.github.io/parame77/desi77/compXyz',

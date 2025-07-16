@@ -45,7 +45,7 @@ function compCompute(ci: tCompIn): tCompOut {
 		throw `err045: stage2 ${pa.stage2} is out of range`;
 	}
 	// step23: log
-	rCO.logstr += `stage2: ${pa.stage2}: [0: square, 1: triangle, 2: cylinder]`;
+	rCO.logstr += `stage2: ${pa.stage2} [0: square, 1: triangle, 2: cylinder]\n`;
 	// step24: optional parametrix view
 	// step25: optional sub-components definition
 	// step26: compute sub-components
@@ -98,7 +98,7 @@ function compCompute(ci: tCompIn): tCompOut {
 		rCO.metrics['weight'] = pa.T2 + 3.5;
 	} else {
 		rCO.calcErr = true;
-		rCO.logstr += `err071: compY param stage2 ${pa.stage2} is out of range`;
+		rCO.logstr += `err071: compY param stage2 ${pa.stage2} is out of range\n`;
 	}
 	// step28: return component output
 	return rCO;
