@@ -9,6 +9,7 @@ class sysBlob {
 	fBlob: tBlob[];
 	constructor() {
 		this.fBlob = [];
+		console.log('dbg012: instanciate singleton sBlob');
 	}
 	getNames(): string[] {
 		const rNames = this.fBlob.map((iblob) => iblob.fName);
