@@ -10,7 +10,8 @@ import type {
 	tSubRecord,
 	tSubORecord
 } from './sysBase';
-import { sBlob } from './sysBlob';
+import type { SysBlob } from './sysBlob';
+//import { sBlob } from './sysBlob';
 
 function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string, boolean] {
 	let rLog = '';
@@ -75,17 +76,21 @@ function makePxJson(pax: tParametrix): string {
 	return JSON.stringify(rJson, null, 2);
 }
 
-function generateOutputFiles(instName: string, co: tCompOut) {
+function generateOutputFiles(instName: string, co: tCompOut, sB: SysBlob) {
 	const eInstName = enhanceInstName(instName);
 	//console.log(`dbg062: eInstName ${eInstName}`);
-	sBlob.saveBlob(`log_${eInstName}.txt`, co.logstr);
+	sB.saveBlob(`log_${eInstName}.txt`, co.logstr);
 	if (co.parametrix) {
-		sBlob.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
+		sB.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
 	}
-	//sBlob.listNames();
+	//sB.listNames();
 }
 
-function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string, boolean] {
+function computeSubComp(
+	instName: string,
+	isub: tSubRecord,
+	sB: SysBlob
+): [tSubORecord, string, boolean] {
 	const rSub: tSubORecord = {};
 	let rLog = '';
 	let rErr = false;
@@ -96,8 +101,8 @@ function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, strin
 			const ci: tCompIn = { instName: instN2, pa: vv.pa, suffix: '' };
 			rLog += `[csc ${kk}] ${instN2}\n`;
 			try {
-				const co = vv.component.compCompute(ci);
-				generateOutputFiles(instN2, co);
+				const co = vv.component.compCompute(ci, sB);
+				generateOutputFiles(instN2, co, sB);
 				rSub[kk] = co;
 				rLog += co.logstr;
 			} catch (eMsg) {

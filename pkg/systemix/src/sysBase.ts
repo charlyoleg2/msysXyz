@@ -8,6 +8,7 @@ import type {
 	//tSubDesign,
 	tPageDef
 } from 'geometrix';
+import type { SysBlob } from './sysBlob';
 
 type tMetrics = Record<string, number>;
 
@@ -49,7 +50,7 @@ interface tCompOut {
 	parametrix?: tParametrix;
 	sub: tSubRecord;
 }
-type tCompCompFunc = (compIn: tCompIn) => tCompOut;
+type tCompCompFunc = (compIn: tCompIn, sB: SysBlob) => tCompOut;
 type tSubORecord = Record<string, tCompOut>;
 
 interface tComponentDef {

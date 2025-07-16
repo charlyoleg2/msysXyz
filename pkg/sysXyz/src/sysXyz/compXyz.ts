@@ -2,7 +2,7 @@
 // the top-level component of the system Xyz
 
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef } from 'systemix';
-import type { tParamDef, tSubRecord, tCompIn, tCompOut, tComponentDef } from 'systemix';
+import type { tParamDef, tSubRecord, tCompIn, tCompOut, tComponentDef, SysBlob } from 'systemix';
 //import { pNumber, pCheckbox, pDropdown, pSectionSeparator } from 'systemix';
 import { pNumber, pDropdown, pSectionSeparator, initCO, computeSubComp } from 'systemix';
 
@@ -42,7 +42,7 @@ const compDef: tParamDef = {
 };
 
 // step20: function definiton of compute component
-function compCompute(ci: tCompIn): tCompOut {
+function compCompute(ci: tCompIn, sB: SysBlob): tCompOut {
 	const rCO = initCO(compDef, ci);
 	const pa = rCO.pa;
 	// step21: compute intermediate parameters (pre-calculation)
@@ -99,7 +99,7 @@ function compCompute(ci: tCompIn): tCompOut {
 	};
 	rCO.sub = isub;
 	// step26: compute sub-components
-	const [osub, log2, err2] = computeSubComp(ci.instName, isub);
+	const [osub, log2, err2] = computeSubComp(ci.instName, isub, sB);
 	rCO.logstr += log2;
 	rCO.calcErr ||= err2;
 	// step27: compute metrics (post-calculation)
