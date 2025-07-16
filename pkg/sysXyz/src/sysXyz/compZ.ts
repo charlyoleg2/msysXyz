@@ -38,11 +38,15 @@ function compCompute(ci: tCompIn): tCompOut {
 	// step23: log
 	// step24: optional parametrix view
 	rCO.parametrix = {
-		url: 'https://charlyoleg2.github.io/parame76/desi76/compZ',
-		partName: 'compZ',
-		objectName: 'compZDef',
-		//objectDef?: compZDef,
-		pxJson: {}
+		url: 'https://charlyoleg2.github.io/parame77/desi77/cylinder',
+		partName: 'cylinder',
+		objectName: 'cylinderDef',
+		//objectDef?: cylinderDef,
+		pxJson: {
+			D1: pa.D3,
+			Di: pa.Di,
+			T1: pa.H1
+		}
 	};
 	// step25: optional sub-components definition
 	// step26: compute sub-components

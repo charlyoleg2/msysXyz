@@ -40,11 +40,16 @@ function compCompute(ci: tCompIn): tCompOut {
 	// step23: log
 	// step24: optional parametrix view
 	rCO.parametrix = {
-		url: 'https://charlyoleg2.github.io/parame76/desi76/compX',
-		partName: 'compX',
-		objectName: 'compXDef',
-		//objectDef?: compXDef,
-		pxJson: {}
+		url: 'https://charlyoleg2.github.io/parame77/desi77/square',
+		partName: 'square',
+		objectName: 'squareDef',
+		//objectDef?: squareDef,
+		pxJson: {
+			W1: pa.Q1,
+			Di: pa.Di,
+			T1: pa.H1,
+			R1: pa.R1
+		}
 	};
 	// step25: optional sub-components definition
 	// step26: compute sub-components

@@ -56,7 +56,12 @@ function compCompute(ci: tCompIn): tCompOut {
 			partName: 'square',
 			objectName: 'square',
 			//objectDef?: squareDef,
-			pxJson: {}
+			pxJson: {
+				W1: pa.T2,
+				Di: pa.Di,
+				T1: pa.H1,
+				R1: pa.R2
+			}
 		};
 		rCO.metrics['weight'] = pa.T2 + 2.5;
 	} else if (pa.stage2 === 1) {
@@ -65,7 +70,13 @@ function compCompute(ci: tCompIn): tCompOut {
 			partName: 'triangle',
 			objectName: 'triangleDef',
 			//objectDef?: triangleDef,
-			pxJson: {}
+			pxJson: {
+				W1: pa.T2,
+				Di: pa.Di,
+				T1: pa.H1,
+				N1: 1,
+				R1: pa.R2
+			}
 		};
 		// define sub-components
 		const isub: tSubRecord = {
@@ -93,7 +104,11 @@ function compCompute(ci: tCompIn): tCompOut {
 			partName: 'cylinder',
 			objectName: 'cylinder',
 			//objectDef?: cylinderDef,
-			pxJson: {}
+			pxJson: {
+				D1: pa.T2,
+				Di: pa.Di,
+				T1: pa.H1
+			}
 		};
 		rCO.metrics['weight'] = pa.T2 + 3.5;
 	} else {
