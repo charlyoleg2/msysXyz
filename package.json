@@ -22,7 +22,6 @@
 	"scripts": {
 		"systemix:ci": "npm -w systemix run ci",
 		"systemix:clean": "npm -w systemix run clean",
-		"systemix:preview": "npm -w systemix run preview",
 		"systemix:version": "npm -w systemix version patch",
 		"systemix:publish": "npm -w systemix publish --provenance",
 		"sysXyz:dev": "npm -w sysXyz run dev",
