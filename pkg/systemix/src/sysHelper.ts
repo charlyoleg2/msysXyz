@@ -81,6 +81,14 @@ function makePxJson(pax: tParametrix): string {
 	return JSON.stringify(rJson, null, 2);
 }
 
+function makeCompParamJson(partName: string, params: tParamVal): string {
+	const rJson = {
+		partName: partName,
+		pVal: params
+	};
+	return JSON.stringify(rJson, null, 2);
+}
+
 function generateOutputFiles(instName: string, co: tCompOut, sB: SysBlob) {
 	const eInstName = enhanceInstName(instName);
 	//console.log(`dbg062: eInstName ${eInstName}`);
@@ -88,6 +96,7 @@ function generateOutputFiles(instName: string, co: tCompOut, sB: SysBlob) {
 	if (co.parametrix) {
 		sB.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
 	}
+	sB.saveBlob(`compp_${eInstName}.json`, makeCompParamJson(co.partName, co.pa));
 	//sB.listNames();
 }
 
