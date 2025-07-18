@@ -7,7 +7,8 @@ import type { tParamVal, tCompIn } from 'systemix';
 // the parametrization
 const sysXyzParams: tParamVal = {
 	Di: 25,
-	H1: 15
+	H1: 15,
+	stage2: 1
 };
 
 // inputs for compXyz
