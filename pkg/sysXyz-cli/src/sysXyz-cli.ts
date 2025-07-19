@@ -4,16 +4,19 @@
 
 import { compXyzSDef } from 'sysXyz';
 import { compXyzIn } from 'sysXyz';
-import { generateOutputFiles, sysBlob } from 'systemix';
+//import { generateOutputFiles, sysBlob } from 'systemix';
+import { generateOutputFiles } from 'systemix';
 import { writeOutputFiles } from './systemcli';
+//import { sBlob } from 'systemix'; // singleton issue with 3 packages
+import { sBlob } from 'sysXyz'; // workaround for the singleton issue
 
 // instanciate the single reference to SysBlob
-const sBlob = sysBlob();
+//const sBlob = sysBlob();
 
 // compute the system
 try {
 	// compute the component compXyz
-	const compXyzOut = compXyzSDef.compCompute(compXyzIn, sBlob);
+	const compXyzOut = compXyzSDef.compCompute(compXyzIn);
 	generateOutputFiles(compXyzIn.instName, compXyzOut, sBlob);
 	console.log(`[top-level err] ${compXyzOut.calcErr}`);
 	console.log(`[top-level log] ${compXyzOut.logstr}`);

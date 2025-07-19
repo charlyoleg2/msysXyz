@@ -11,7 +11,7 @@ import type {
 	tSubORecord
 } from './sysBase';
 import type { SysBlob } from './sysBlob';
-//import { sBlob } from './sysBlob';
+import { sBlob } from './sysBlob';
 
 function combineParams(compDef: tParamDef, ci: tCompIn): [tParamVal, string, boolean] {
 	let rLog = '';
@@ -89,22 +89,18 @@ function makeCompParamJson(partName: string, params: tParamVal): string {
 	return JSON.stringify(rJson, null, 2);
 }
 
-function generateOutputFiles(instName: string, co: tCompOut, sB: SysBlob) {
+function generateOutputFiles(instName: string, co: tCompOut, iBlob: SysBlob) {
 	const eInstName = enhanceInstName(instName);
 	//console.log(`dbg062: eInstName ${eInstName}`);
-	sB.saveBlob(`log_${eInstName}.txt`, co.logstr);
+	iBlob.saveBlob(`log_${eInstName}.txt`, co.logstr);
 	if (co.parametrix) {
-		sB.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
+		iBlob.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
 	}
-	sB.saveBlob(`compp_${eInstName}.json`, makeCompParamJson(co.partName, co.pa));
-	//sB.listNames();
+	iBlob.saveBlob(`compp_${eInstName}.json`, makeCompParamJson(co.partName, co.pa));
+	//iBlob.listNames();
 }
 
-function computeSubComp(
-	instName: string,
-	isub: tSubRecord,
-	sB: SysBlob
-): [tSubORecord, string, boolean] {
+function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, string, boolean] {
 	const rSub: tSubORecord = {};
 	let rLog = '';
 	let rErr = false;
@@ -115,8 +111,8 @@ function computeSubComp(
 			const ci: tCompIn = { instName: instN2, pa: vv.pa, suffix: '' };
 			rLog += `[csc ${kk}] ${instN2}\n`;
 			try {
-				const co = vv.component.compCompute(ci, sB);
-				generateOutputFiles(instN2, co, sB);
+				const co = vv.component.compCompute(ci);
+				generateOutputFiles(instN2, co, sBlob);
 				rSub[kk] = co;
 				rLog += co.logstr;
 			} catch (eMsg) {

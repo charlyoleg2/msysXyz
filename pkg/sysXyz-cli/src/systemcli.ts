@@ -4,7 +4,8 @@
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import type { SysBlob } from 'systemix';
-//import { sBlob } from 'systemix';
+//import { sBlob } from 'systemix'; // issue of singleton with 3 packages
+//import { sBlob } from 'sysXyz'; // workaround for the singleton issue
 
 async function writeOneTxtFile(iFileName: string, iFileBlob: string, idx: number) {
 	try {
@@ -15,7 +16,7 @@ async function writeOneTxtFile(iFileName: string, iFileBlob: string, idx: number
 	}
 }
 
-async function writeOutputFiles(outDirName: string, sB: SysBlob) {
+async function writeOutputFiles(outDirName: string, iBlob: SysBlob) {
 	try {
 		await fs.rm(outDirName, { recursive: true, force: true }); // optional cleaning
 		await fs.mkdir(outDirName, { recursive: true });
@@ -24,7 +25,7 @@ async function writeOutputFiles(outDirName: string, sB: SysBlob) {
 		console.error(err);
 	}
 	let ii = 0;
-	for (const blob of sB.getBlobs()) {
+	for (const blob of iBlob.getBlobs()) {
 		ii += 1;
 		const fPath = path.join(outDirName, blob.fName);
 		await writeOneTxtFile(fPath, blob.fBlob, ii);

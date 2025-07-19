@@ -6,14 +6,19 @@ interface tBlob {
 }
 
 class SysBlob {
-	fNB: tBlob[];
+	static instance: SysBlob;
+	static fNB: tBlob[];
 	constructor() {
-		//console.log('dbg012: instanciate singleton sBlob start');
-		this.fNB = [];
-		//console.log('dbg018: instanciate singleton sBlob end');
+		console.log('dbg012: SysBlob constructor start');
+		if (SysBlob.instance) {
+			return SysBlob.instance;
+		}
+		SysBlob.instance = this;
+		SysBlob.fNB = [];
+		console.log('dbg018: SysBlob constructor end');
 	}
 	getNames(): string[] {
-		const rNames = this.fNB.map((iblob) => iblob.fName);
+		const rNames = SysBlob.fNB.map((iblob) => iblob.fName);
 		return rNames;
 	}
 	listNames() {
@@ -24,14 +29,14 @@ class SysBlob {
 		}
 	}
 	saveBlob(iFileName: string, iBlob: string) {
-		//console.log(`dbg014: iFileName: ${iFileName}`);
-		this.fNB.push({ fName: iFileName, fBlob: iBlob });
+		//console.log(`dbg032: save iFileName: ${iFileName} with inst ${SysBlob.instance}`);
+		SysBlob.fNB.push({ fName: iFileName, fBlob: iBlob });
 	}
 	flushBlobs() {
-		this.fNB = [];
+		SysBlob.fNB = [];
 	}
 	getBlobs(): tBlob[] {
-		return this.fNB;
+		return SysBlob.fNB;
 	}
 	createZip(): string {
 		const rZip = 'this is a zip';
@@ -43,8 +48,8 @@ function sysBlob(): SysBlob {
 	const rInst = new SysBlob();
 	return rInst;
 }
-//const sBlob = sysBlob();
+const sBlob = sysBlob();
 
 export type { tBlob, SysBlob };
-//export { sBlob };
-export { sysBlob };
+export { sBlob };
+//export { sysBlob };
