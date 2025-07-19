@@ -9,13 +9,13 @@ class SysBlob {
 	static instance: SysBlob;
 	static fNB: tBlob[];
 	constructor() {
-		console.log('dbg012: SysBlob constructor start');
+		//console.log('dbg012: SysBlob constructor start');
 		if (SysBlob.instance) {
 			return SysBlob.instance;
 		}
 		SysBlob.instance = this;
 		SysBlob.fNB = [];
-		console.log('dbg018: SysBlob constructor end');
+		//console.log('dbg018: SysBlob constructor end');
 	}
 	getNames(): string[] {
 		const rNames = SysBlob.fNB.map((iblob) => iblob.fName);
