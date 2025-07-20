@@ -15,13 +15,13 @@ npx desi77-cli --design desi77/triangle --param tmp/px_Xyz_stage2_refine.json --
 
 #echo "generate STL with FreeCAD"
 cd tmp2
-freecad.cmd Xyz_stage1_fc.py Xyz_stage1
-freecad.cmd Xyz_stage2_fc.py Xyz_stage2
-freecad.cmd Xyz_stage3_fc.py Xyz_stage3
-freecad.cmd Xyz_stage2_refine_fc.py Xyz_stage2_refine
+freecad.cmd Xyz_stage1_fc.py Xyz_stage1_fc
+freecad.cmd Xyz_stage2_fc.py Xyz_stage2_fc
+freecad.cmd Xyz_stage3_fc.py Xyz_stage3_fc
+freecad.cmd Xyz_stage2_refine_fc.py Xyz_stage2_refine_fc
 
 echo "generate STL-assembly with FreeCAD"
 cp ../scr/Xyz_assembly_fc.py ./
-freecad.cmd Xyz_assembly_fc.py Xyz_assembly
+freecad.cmd Xyz_assembly_fc.py Xyz_assembly_fc
 
 echo "gen_stl_Xyz_fc.sh says Bye"
