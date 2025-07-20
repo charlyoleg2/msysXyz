@@ -78,6 +78,16 @@ Prerequisite
 - [npm](https://docs.npmjs.com/cli/v11/commands/npm) version 11.0.0 or higher
 
 
+Singleton issue
+---------------
+
+The package *systemix* uses a *singleton* for storing the file-content to be written. As this singleton is used over 3 packages (systemix, sysXyz and sysXyz-cli), we are facing the issue [singleton over several packages](https://github.com/charlyoleg2/mTestSingleton).
+
+For solving properly this issue, the API of *systemix* should be extended with explicit reference to the singleton.
+
+In this PoC, the API of *systemix* hasn't been extended. Instead, there is a small workaround in *pkg/sysXyz/src/index.ts*. But this workaround doesn't allow importing *system* from *system*.
+
+
 Publish a new release
 ---------------------
 
