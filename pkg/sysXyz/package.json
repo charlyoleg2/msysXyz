@@ -60,7 +60,7 @@
 	"devDependencies": {
 		"@eslint/js": "^9.10.0",
 		"@types/eslint__js": "^8.42.3",
-		"esbuild": "^0.25.7",
+		"esbuild": "^0.25.8",
 		"eslint": "^9.31.0",
 		"eslint-config-prettier": "^10.1.8",
 		"geometrix": "^1.0.23",
