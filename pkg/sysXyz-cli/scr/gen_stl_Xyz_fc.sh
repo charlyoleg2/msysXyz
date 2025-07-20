@@ -24,4 +24,5 @@ echo "generate STL-assembly with FreeCAD"
 cp ../scr/Xyz_assembly_fc.py ./
 freecad.cmd Xyz_assembly_fc.py Xyz_assembly_fc
 
+cd .. && ls -ltra
 echo "gen_stl_Xyz_fc.sh says Bye"

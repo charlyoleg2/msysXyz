@@ -23,4 +23,5 @@ echo "generate STL-assembly with OpenSCAD"
 cp scr/Xyz_assembly.scad tmp2/
 openscad -o tmp2/Xyz_assembly.stl tmp2/Xyz_assembly.scad
 
+ls -ltra tmp2
 echo "gen_stl_Xyz.sh says Bye"
