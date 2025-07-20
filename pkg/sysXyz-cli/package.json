@@ -55,6 +55,7 @@
 		"clean": "rimraf dist dist2 node_modules tmp tmp2"
 	},
 	"dependencies": {
+		"desi77-cli": "^0.1.20",
 		"sysXyz": "^0.1.2"
 	},
 	"devDependencies": {
