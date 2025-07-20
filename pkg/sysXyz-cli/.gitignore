@@ -5,3 +5,4 @@ dist2/
 node_modules/
 # cli output files
 tmp/
+tmp2/

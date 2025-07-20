@@ -48,8 +48,11 @@
 		"test:unit": "vitest",
 		"test:unit:once": "vitest --run",
 		"ci": "run-s check build pretty lint test:unit:once",
-		"run": "dist/sysXyz-cli.js",
-		"clean": "rimraf dist dist2 node_modules tmp"
+		"runSysXyz": "dist/sysXyz-cli.js",
+		"runGenStlXyz": "scr/gen_stl_Xyz.sh",
+		"runXyz": "run-s runSysXyz runGenStlXyz",
+		"run": "run-s runXyz",
+		"clean": "rimraf dist dist2 node_modules tmp tmp2"
 	},
 	"dependencies": {
 		"sysXyz": "^0.1.2"
