@@ -18,6 +18,7 @@ try {
 	// compute the component compXyz
 	const compXyzOut = compXyzSDef.compCompute(compXyzIn);
 	generateOutputFiles(compXyzIn.instName, compXyzOut, sBlob);
+	sBlob.saveBlob(`gen_stl_${compXyzIn.instName}.sh`, sBlob.getPartialBlob('genStlOscad'));
 	console.log(`[top-level err] ${compXyzOut.calcErr}`);
 	console.log(`[top-level log] ${compXyzOut.logstr}`);
 	// Use some results

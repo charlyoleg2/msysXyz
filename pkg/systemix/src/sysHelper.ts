@@ -81,6 +81,15 @@ function makePxJson(pax: tParametrix): string {
 	return JSON.stringify(rJson, null, 2);
 }
 
+function makeGenStlOscad(pax: tParametrix, iN: string): string {
+	const rTxt = `
+echo "Generate STL of ${pax.partName}"
+npx desi77-cli --design desi77/${pax.partName} --param tmp/px_${iN}.json --outDir tmp2 --outFileName ${iN}.scad write scad_3d_openscad
+openscad -o tmp2/${iN}.stl tmp2/${iN}.scad
+`;
+	return rTxt;
+}
+
 function makeCompParamJson(partName: string, params: tParamVal): string {
 	const rJson = {
 		partName: partName,
@@ -95,6 +104,8 @@ function generateOutputFiles(instName: string, co: tCompOut, iBlob: SysBlob) {
 	iBlob.saveBlob(`log_${eInstName}.txt`, co.logstr);
 	if (co.parametrix) {
 		iBlob.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
+		iBlob.savePartialBlob('genStlOscad', makeGenStlOscad(co.parametrix, eInstName));
+		//iBlob.savePartialBlob('genStlFc', makeGenStlFc(co.parametrix, co.instName));
 	}
 	iBlob.saveBlob(`compp_${eInstName}.json`, makeCompParamJson(co.partName, co.pa));
 	//iBlob.listNames();
