@@ -94,7 +94,7 @@ function makeGenStlFc(pax: tParametrix, iN: string): string {
 	const rTxt = `
 echo "Generate STL of ${pax.partName} with FreeCAD"
 npx desi77-cli --design desi77/${pax.partName} --param tmp/px_${iN}.json --outDir tmp2 --outFileName ${iN}_fc.py write py_3d_freecad
-freecad.cmd ${iN}_fc.py ${iN}_fc
+(cd tmp2 && freecad.cmd ${iN}_fc.py ${iN}_fc)
 `;
 	return rTxt;
 }

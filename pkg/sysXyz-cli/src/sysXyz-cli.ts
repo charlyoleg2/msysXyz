@@ -40,10 +40,9 @@ echo "gen_stl_Xyz_fc.sh says Hello"
 `;
 const genStlFcEnd = `
 echo "generate STL-assembly with FreeCAD"
-cp ../scr/Xyz_assembly_fc.py ./
-freecad.cmd Xyz_assembly_fc.py Xyz_assembly_fc
+cp scr/Xyz_assembly_fc.py tmp2/
+(cd tmp2 && freecad.cmd Xyz_assembly_fc.py Xyz_assembly_fc)
 
-cd ..
 echo "ls -ltra pkg/sysXyz-cli/tmp2"
 ls -ltra tmp2
 echo "(cd pkg/sysXyz-cli && f3d tmp2/Xyz_assembly_fc.stl)"
