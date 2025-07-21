@@ -90,6 +90,15 @@ openscad -o tmp2/${iN}.stl tmp2/${iN}.scad
 	return rTxt;
 }
 
+function makeGenStlFc(pax: tParametrix, iN: string): string {
+	const rTxt = `
+echo "Generate STL of ${pax.partName} with FreeCAD"
+npx desi77-cli --design desi77/${pax.partName} --param tmp/px_${iN}.json --outDir tmp2 --outFileName ${iN}_fc.py write py_3d_freecad
+freecad.cmd ${iN}_fc.py ${iN}_fc
+`;
+	return rTxt;
+}
+
 function makeCompParamJson(partName: string, params: tParamVal): string {
 	const rJson = {
 		partName: partName,
@@ -105,7 +114,7 @@ function generateOutputFiles(instName: string, co: tCompOut, iBlob: SysBlob) {
 	if (co.parametrix) {
 		iBlob.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
 		iBlob.savePartialBlob('genStlOscad', makeGenStlOscad(co.parametrix, eInstName));
-		//iBlob.savePartialBlob('genStlFc', makeGenStlFc(co.parametrix, co.instName));
+		iBlob.savePartialBlob('genStlFc', makeGenStlFc(co.parametrix, eInstName));
 	}
 	iBlob.saveBlob(`compp_${eInstName}.json`, makeCompParamJson(co.partName, co.pa));
 	//iBlob.listNames();

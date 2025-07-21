@@ -31,6 +31,25 @@ echo "(cd pkg/sysXyz-cli && f3d tmp2/Xyz_assembly.stl)"
 echo "gen_stl_Xyz.sh says Bye"
 `;
 
+const genStlFcStart = `#!/usr/bin/env bash
+# gen_stl_Xyz_fc.sh
+
+cd $(dirname $0)/..
+
+echo "gen_stl_Xyz_fc.sh says Hello"
+`;
+const genStlFcEnd = `
+echo "generate STL-assembly with FreeCAD"
+cp ../scr/Xyz_assembly_fc.py ./
+freecad.cmd Xyz_assembly_fc.py Xyz_assembly_fc
+
+cd ..
+echo "ls -ltra pkg/sysXyz-cli/tmp2"
+ls -ltra tmp2
+echo "(cd pkg/sysXyz-cli && f3d tmp2/Xyz_assembly_fc.stl)"
+echo "gen_stl_Xyz_fc.sh says Bye"
+`;
+
 // compute the system
 try {
 	// compute the component compXyz
@@ -39,6 +58,10 @@ try {
 	sBlob.saveBlob(
 		`gen_stl_${compXyzIn.instName}.sh`,
 		genStlOscadStart + sBlob.getPartialBlob('genStlOscad') + genStlOscadEnd
+	);
+	sBlob.saveBlob(
+		`gen_stl_${compXyzIn.instName}_fc.sh`,
+		genStlFcStart + sBlob.getPartialBlob('genStlFc') + genStlFcEnd
 	);
 	console.log(`[top-level err] ${compXyzOut.calcErr}`);
 	console.log(`[top-level log] ${compXyzOut.logstr}`);
