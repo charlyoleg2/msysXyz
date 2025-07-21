@@ -14,7 +14,7 @@ print(f"outFileName: {outFileName}")
 
 ### converting Mesh to Part
 #def fex_Xyz_assembly():
-#	MEX = Mesh.Mesh('Xyz_stage1.stl')
+#	MEX = Mesh.Mesh('Xyz_stage1_fc.stl')
 #	shape = Part.Shape()
 #	shape.makeShapeFromMesh(MEX.Topology, 0.05)
 #	solid = Part.makeSolid(shape)
@@ -34,13 +34,13 @@ print(f"outFileName: {outFileName}")
 
 ### directly working with Mesh
 def mesh_Xyz_assembly():
-	STAGE1 = Mesh.Mesh('Xyz_stage1.stl')
+	STAGE1 = Mesh.Mesh('Xyz_stage1_fc.stl')
 	STAGE1.Placement.Base = (App.Vector(0, 0, 0))
-	STAGE2 = Mesh.Mesh('Xyz_stage2.stl')
+	STAGE2 = Mesh.Mesh('Xyz_stage2_fc.stl')
 	STAGE2.Placement.Base = (App.Vector(0, 0, 100))
-	STAGE3 = Mesh.Mesh('Xyz_stage3.stl')
+	STAGE3 = Mesh.Mesh('Xyz_stage3_fc.stl')
 	STAGE3.Placement.Base = (App.Vector(0, 0, 200))
-	STAGE2_Refine = Mesh.Mesh('Xyz_stage2_refine.stl')
+	STAGE2_Refine = Mesh.Mesh('Xyz_stage2_refine_fc.stl')
 	STAGE2_Refine.Placement.Base = (App.Vector(0, 0, 100))
 	assembly = STAGE1
 	#assembly = assembly.unite(STAGE2)
