@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # gen_stl_Xyz_fc.sh
+# This script is now obsolet because Systemix generates it in the directory tmp/
+# This script is not deleted and acts as reference and example
 
 cd $(dirname $0)/..
 
