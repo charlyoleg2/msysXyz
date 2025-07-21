@@ -49,7 +49,7 @@
 		"test:unit:once": "vitest --run",
 		"ci": "run-s check build pretty lint test:unit:once",
 		"runSysXyz": "dist/sysXyz-cli.js",
-		"runGenStlXyz": "scr/gen_stl_Xyz.sh",
+		"runGenStlXyz": "bash tmp/gen_stl_Xyz.sh",
 		"runXyz": "run-s runSysXyz runGenStlXyz",
 		"run": "run-s runXyz",
 		"clean": "rimraf dist dist2 node_modules tmp tmp2"
