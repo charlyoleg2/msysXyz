@@ -41,13 +41,13 @@ import Mesh
 #print(sys.argv)
 outFileName = "Xyz_assembly_fc"
 if (len(sys.argv) == 3):
-    outFileName = sys.argv[2]
+	outFileName = sys.argv[2]
 print(f"outFileName: {outFileName}")
 
 ### directly working with Mesh
 def mesh_Xyz_assembly():
 `;
-const asmStlFcEnd = `assembly = MXyz_stage1
+const asmStlFcEnd = `	assembly = MXyz_stage1
 	#assembly = assembly.unite(MXyz_stage2)
 	assembly = assembly.unite(MXyz_stage3)
 	assembly = assembly.unite(MXyz_stage2_refine)
