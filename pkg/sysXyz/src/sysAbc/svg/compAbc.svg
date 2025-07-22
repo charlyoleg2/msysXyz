@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="600"
-   height="3000"
-   viewBox="0 0 158.75 793.75"
+   width="374.89633"
+   height="528.05859"
+   viewBox="0 0 99.191321 139.7155"
    version="1.1"
    id="svg1"
    inkscape:version="1.4.2 (1:1.4.2+202505120737+ebf0e940d0)"
@@ -23,27 +23,36 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="1.1099335"
-     inkscape:cx="397.32112"
-     inkscape:cy="451.82889"
+     inkscape:zoom="0.78484147"
+     inkscape:cx="396.25837"
+     inkscape:cy="561.25984"
      inkscape:window-width="1854"
      inkscape:window-height="1131"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="99.191322"
+       height="139.7155"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
   <defs
      id="defs1">
     <rect
        x="435.16122"
-       y="577.5121"
-       width="75.680213"
-       height="66.670664"
+       y="577.51208"
+       width="75.680214"
+       height="66.670662"
        id="rect6" />
     <rect
-       x="423.44881"
-       y="395.51921"
-       width="55.859205"
+       x="423.44882"
+       y="395.5192"
+       width="55.859203"
        height="71.175438"
        id="rect5" />
     <marker
@@ -67,17 +76,11 @@
          id="path4" />
     </marker>
     <rect
-       x="361.28292"
+       x="361.28293"
        y="140.54897"
-       width="82.887852"
-       height="70.274484"
+       width="82.887856"
+       height="70.274483"
        id="rect2" />
-    <rect
-       x="16.563855"
-       y="24.208711"
-       width="226.79739"
-       height="45.869136"
-       id="rect1" />
     <rect
        x="361.28293"
        y="140.54897"
@@ -110,18 +113,6 @@
        width="82.887856"
        height="70.274483"
        id="rect2-1-8" />
-    <rect
-       x="361.28293"
-       y="140.54897"
-       width="82.887856"
-       height="70.274483"
-       id="rect2-1-9" />
-    <rect
-       x="361.28293"
-       y="140.54897"
-       width="82.887856"
-       height="70.274483"
-       id="rect2-1-4" />
     <rect
        x="361.28293"
        y="140.54897"
@@ -198,32 +189,15 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-11.548213,-33.71734)">
     <rect
        style="fill:#ffffff;stroke:#ffffff;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none"
        id="rect7"
        width="98.926735"
        height="139.45093"
        x="11.680505"
-       y="33.849628"
-       inkscape:export-filename="compAbc.svg"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
-    <text
-       xml:space="preserve"
-       transform="scale(0.26458333)"
-       id="text1"
-       style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect1);fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
-         x="16.564453"
-         y="38.445426"
-         id="tspan4">src_compAbc.svg</tspan></text>
-    <ellipse
-       style="fill:#cccccc;stroke:#aa0000;stroke-width:0.264582;stroke-linejoin:round"
-       id="path1-3-1"
-       cx="-62.420605"
-       cy="162.19664"
-       rx="28.654938"
-       ry="11.561476" />
+       y="33.849628" />
     <path
        style="fill:#ececec;stroke:#aa0000;stroke-width:0.264583;stroke-linejoin:round"
        d="m 35.988701,133.84967 0.36595,22.66843 c 0,0 1.08547,3.22922 2.20517,4.44763 1.60417,1.7456 3.89919,2.76264 6.0831,3.68516 4.34008,1.83332 8.99935,3.00887 13.6783,3.56097 2.21453,0.26131 4.46428,0.0286 6.68836,-0.13229 5.43813,-0.39333 11.01559,-0.44068 16.23014,-2.0333 3.71543,-1.13477 7.68829,-2.47802 10.40027,-5.25962 1.09934,-1.12755 2.02453,-4.26855 2.02453,-4.26855 l -0.36595,-22.66843 z"
@@ -269,9 +243,9 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect2);fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="361.2832"
          y="154.78527"
-         id="tspan7">Di</tspan></text>
+         id="tspan2">Di</tspan></text>
     <path
-       style="fill:#ececec;stroke:#008000;stroke-width:0.26458333;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide)"
+       style="fill:#ececec;stroke:#008000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide)"
        d="M 76.519227,59.83279 95.112683,41.716089"
        id="path3" />
     <text
@@ -281,7 +255,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect2-1);display:inline;fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="361.2832"
          y="154.78527"
-         id="tspan8">Di</tspan></text>
+         id="tspan3">Di</tspan></text>
     <path
        style="fill:#ececec;stroke:#008000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide-2)"
        d="M 51.761528,131.19095 29.423262,118.79306"
@@ -293,7 +267,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect2-1-8);display:inline;fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="361.2832"
          y="154.78527"
-         id="tspan9">D1</tspan></text>
+         id="tspan4">D1</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-59.869709,8.3535168)"
@@ -301,7 +275,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect2-1-8-4);display:inline;fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="361.2832"
          y="154.78527"
-         id="tspan10">D3</tspan></text>
+         id="tspan7">D3</tspan></text>
     <path
        style="fill:#ececec;stroke:#008000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide-3-7)"
        d="M 46.465954,57.769149 38.37258,50.366843"
@@ -321,7 +295,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect5);fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="423.44922"
          y="409.75597"
-         id="tspan11">H3</tspan></text>
+         id="tspan8">H3</tspan></text>
     <path
        style="fill:#ececec;stroke:#008000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide);marker-end:url(#ArrowWide)"
        d="m 95.94441,133.84967 0.365945,22.66843"
@@ -333,7 +307,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect6);fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="435.16211"
          y="591.74816"
-         id="tspan12">H1</tspan></text>
+         id="tspan9">H1</tspan></text>
     <path
        style="fill:#ececec;stroke:#008000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide-8);marker-end:url(#ArrowWide-8)"
        d="m 90.528027,106.03662 0.36595,27.82869"
@@ -345,6 +319,6 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect6-0);display:inline;fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="435.16211"
          y="591.74816"
-         id="tspan13">H2</tspan></text>
+         id="tspan10">H2</tspan></text>
   </g>
 </svg>
