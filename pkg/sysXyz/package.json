@@ -49,7 +49,8 @@
 		"test:unit:once": "vitest --run",
 		"ci": "run-s check build pretty lint test:unit:once svgo",
 		"svgo1": "svgo -f src/sysXyz/svg -o dist/pgdsvg/",
-		"svgo": "run-s svgo1",
+		"svgo2": "svgo -f src/sysAbc/svg -o dist/pgdsvg/",
+		"svgo": "run-s svgo1 svgo2",
 		"browserBundleA": "esbuild src/sysXyz.ts --bundle --format=esm --outfile=dist2/sysXyz.js",
 		"browserBundleAll": "esbuild dist/index.js --bundle --format=esm --outfile=dist2/sysXyz.js",
 		"clean": "rimraf dist dist2 node_modules"
