@@ -8,7 +8,7 @@ import type { tParamVal, tCompIn } from 'systemix';
 const AbcParams: tParamVal = {
 	Di: 30,
 	D1: 70,
-	D2: 50,
+	D3: 50,
 	H1: 30,
 	H2: 20,
 	H3: 50
