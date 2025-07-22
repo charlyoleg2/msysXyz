@@ -2,6 +2,7 @@
 // the library for supporting calculation of system parameters
 
 import type {
+	tVec3,
 	tParamDef,
 	tParametrix,
 	tCompIn,
@@ -90,6 +91,17 @@ openscad -o tmp2/${iN}.stl tmp2/${iN}.scad
 	return rTxt;
 }
 
+function makeAsmStlOscad(iN: string, iO: tVec3, iP: tVec3): string {
+	const rTxt = `
+module ${iN} () {
+	translate( [ ${iP[0]}, ${iP[1]}, ${iP[2]} ])
+		rotate( [ ${iO[0]}, ${iO[1]}, ${iO[2]} ])
+			import("./${iN}.stl");
+}
+`;
+	return rTxt;
+}
+
 function makeGenStlFc(pax: tParametrix, iN: string): string {
 	const rTxt = `
 echo "Generate STL of ${pax.partName} with FreeCAD"
@@ -107,13 +119,20 @@ function makeCompParamJson(partName: string, params: tParamVal): string {
 	return JSON.stringify(rJson, null, 2);
 }
 
-function generateOutputFiles(instName: string, co: tCompOut, iBlob: SysBlob) {
+function generateOutputFiles(
+	instName: string,
+	co: tCompOut,
+	iOrientation: tVec3,
+	iPosition: tVec3,
+	iBlob: SysBlob
+) {
 	const eInstName = enhanceInstName(instName);
 	//console.log(`dbg062: eInstName ${eInstName}`);
 	iBlob.saveBlob(`log_${eInstName}.txt`, co.logstr);
 	if (co.parametrix) {
 		iBlob.saveBlob(`px_${eInstName}.json`, makePxJson(co.parametrix));
 		iBlob.savePartialBlob('genStlOscad', makeGenStlOscad(co.parametrix, eInstName));
+		iBlob.savePartialBlob('asmStlOscad', makeAsmStlOscad(eInstName, iOrientation, iPosition));
 		iBlob.savePartialBlob('genStlFc', makeGenStlFc(co.parametrix, eInstName));
 	}
 	iBlob.saveBlob(`compp_${eInstName}.json`, makeCompParamJson(co.partName, co.pa));
@@ -132,7 +151,7 @@ function computeSubComp(instName: string, isub: tSubRecord): [tSubORecord, strin
 			rLog += `[csc ${kk}] ${instN2}\n`;
 			try {
 				const co = vv.component.compCompute(ci);
-				generateOutputFiles(instN2, co, sBlob);
+				generateOutputFiles(instN2, co, vv.orientation, vv.position, sBlob);
 				rSub[kk] = co;
 				rLog += co.logstr;
 			} catch (eMsg) {

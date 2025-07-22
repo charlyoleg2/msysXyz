@@ -1,6 +1,8 @@
 # Xyz_assembly_fc.py
 # run the script with:
 # freecad.cmd myScript.py
+# This script is now obsolet because Systemix generates it in the directory tmp/
+# This script is not deleted as it acts as reference and example
 
 import FreeCAD as App
 #import Part

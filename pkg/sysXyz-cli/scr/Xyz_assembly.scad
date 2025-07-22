@@ -1,4 +1,6 @@
 // Xyz_assembly.scad
+// This script is now obsolet because Systemix generates it in the directory tmp/
+// This script is not deleted as it acts as reference and example
 
 
 module Xyz_stage1 () {
