@@ -92,6 +92,7 @@ openscad -o tmp2/${iN}.stl tmp2/${iN}.scad
 }
 
 function makeAsmStlOscad(iN: string, iO: tVec3, iP: tVec3): string {
+	//console.log(`dbg095: iN: ${iN}  posZ: ${iP[2]}`);
 	const rTxt = `
 module ${iN} () {
 	translate( [ ${iP[0]}, ${iP[1]}, ${iP[2]} ])

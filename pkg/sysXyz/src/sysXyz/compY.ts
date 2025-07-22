@@ -18,6 +18,7 @@ const compDef: tParamDef = {
 		pNumber('T2', 'mm', 70, 1, 500, 1),
 		pSectionSeparator('heights and details'),
 		pNumber('H1', 'mm', 40, 10, 1000, 1),
+		pNumber('H2', 'mm', 40, 10, 1000, 1),
 		pDropdown('stage2', ['square', 'triangle', 'cylinder']),
 		pNumber('R2', 'mm', 5, 0, 100, 1)
 	],
