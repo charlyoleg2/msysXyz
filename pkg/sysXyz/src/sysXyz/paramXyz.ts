@@ -8,6 +8,7 @@ import type { tParamVal, tCompIn } from 'systemix';
 const XyzParams: tParamVal = {
 	Di: 25,
 	H1: 15,
+	H2: 5,
 	stage2: 1
 };
 
