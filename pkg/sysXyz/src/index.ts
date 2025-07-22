@@ -3,7 +3,7 @@
 
 // system sysXyz
 export { compXyzSDef } from './sysXyz/compXyz';
-export { compXyzIn } from './sysXyz/sysXyz';
+export { compXyzIn } from './sysXyz/paramXyz';
 
 // system sysAbc
 //export { compAbcSDef } from './sysAbc/compAbc';

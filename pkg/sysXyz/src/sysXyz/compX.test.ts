@@ -1,7 +1,7 @@
-// sysXyz.test.ts
+// compX.test.ts
 
 import { describe, it, expect } from 'vitest';
-//import * from './sysXyz'
+//import * from './compX'
 
 describe('sum test', () => {
 	it('adds 1 + 2 to equal 3', () => {
