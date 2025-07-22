@@ -119,7 +119,8 @@ npx desi77-cli --design desi77/${pax.partName} --param tmp/px_${iN}.json --outDi
 function makeAsmStlFc(iN: string, iO: tVec3, iP: tVec3): string {
 	const rTxt = `	M${iN} = Mesh.Mesh('${iN}_fc.stl')
 	# rot = App.Rotation(FreeCAD.Vector(0,0,1), ${iO[0]})
-	M${iN}.Placement.Base = (App.Vector(${iP[0]}, ${iP[1]}, ${iP[2]}))`;
+	M${iN}.Placement.Base = (App.Vector(${iP[0]}, ${iP[1]}, ${iP[2]}))
+`;
 	return rTxt;
 }
 

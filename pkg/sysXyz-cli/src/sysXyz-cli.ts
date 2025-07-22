@@ -31,8 +31,30 @@ Xyz_system();
 `;
 
 const asmStlFcStart = `# Xyz_assembly_fc.py
+# run the script with:
+# freecad.cmd myScript.py
+
+import FreeCAD as App
+#import Part
+import Mesh
+
+#print(sys.argv)
+outFileName = "Xyz_assembly_fc"
+if (len(sys.argv) == 3):
+    outFileName = sys.argv[2]
+print(f"outFileName: {outFileName}")
+
+### directly working with Mesh
+def mesh_Xyz_assembly():
 `;
-const asmStlFcEnd = `
+const asmStlFcEnd = `assembly = MXyz_stage1
+	#assembly = assembly.unite(MXyz_stage2)
+	assembly = assembly.unite(MXyz_stage3)
+	assembly = assembly.unite(MXyz_stage2_refine)
+	#assembly.write(f"{outFileName}.stl", "AST")
+	assembly.write(f"{outFileName}.stl")
+
+mesh_Xyz_assembly()
 `;
 
 const genStlOscadStart = `#!/usr/bin/env bash
