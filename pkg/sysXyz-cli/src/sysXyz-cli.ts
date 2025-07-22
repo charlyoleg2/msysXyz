@@ -30,6 +30,11 @@ module Xyz_system () {
 Xyz_system();
 `;
 
+const asmStlFcStart = `# Xyz_assembly_fc.py
+`;
+const asmStlFcEnd = `
+`;
+
 const genStlOscadStart = `#!/usr/bin/env bash
 # gen_stl_Xyz.sh
 
@@ -80,6 +85,10 @@ try {
 	sBlob.saveBlob(
 		`gen_stl_${compXyzIn.instName}.sh`,
 		genStlOscadStart + sBlob.getPartialBlob('genStlOscad') + genStlOscadEnd
+	);
+	sBlob.saveBlob(
+		`${compXyzIn.instName}_assembly_fc.py`,
+		asmStlFcStart + sBlob.getPartialBlob('asmStlFc') + asmStlFcEnd
 	);
 	sBlob.saveBlob(
 		`gen_stl_${compXyzIn.instName}_fc.sh`,

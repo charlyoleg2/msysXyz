@@ -67,6 +67,10 @@ function enhanceInstName(instName: string): string {
 	return rName;
 }
 
+//
+// ====> File generators
+//
+
 function makePxJson(pax: tParametrix): string {
 	const lastModif = new Date()
 		.toISOString()
@@ -112,6 +116,13 @@ npx desi77-cli --design desi77/${pax.partName} --param tmp/px_${iN}.json --outDi
 	return rTxt;
 }
 
+function makeAsmStlFc(iN: string, iO: tVec3, iP: tVec3): string {
+	const rTxt = `	M${iN} = Mesh.Mesh('${iN}_fc.stl')
+	# rot = App.Rotation(FreeCAD.Vector(0,0,1), ${iO[0]})
+	M${iN}.Placement.Base = (App.Vector(${iP[0]}, ${iP[1]}, ${iP[2]}))`;
+	return rTxt;
+}
+
 function makeCompParamJson(partName: string, params: tParamVal): string {
 	const rJson = {
 		partName: partName,
@@ -119,6 +130,10 @@ function makeCompParamJson(partName: string, params: tParamVal): string {
 	};
 	return JSON.stringify(rJson, null, 2);
 }
+
+//
+// <==== End of File generators
+//
 
 function generateOutputFiles(
 	instName: string,
@@ -135,6 +150,7 @@ function generateOutputFiles(
 		iBlob.savePartialBlob('genStlOscad', makeGenStlOscad(co.parametrix, eInstName));
 		iBlob.savePartialBlob('asmStlOscad', makeAsmStlOscad(eInstName, iOrientation, iPosition));
 		iBlob.savePartialBlob('genStlFc', makeGenStlFc(co.parametrix, eInstName));
+		iBlob.savePartialBlob('asmStlFc', makeAsmStlFc(eInstName, iOrientation, iPosition));
 	}
 	iBlob.saveBlob(`compp_${eInstName}.json`, makeCompParamJson(co.partName, co.pa));
 	//iBlob.listNames();
