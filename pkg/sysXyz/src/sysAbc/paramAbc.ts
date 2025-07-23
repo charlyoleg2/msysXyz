@@ -7,11 +7,11 @@ import type { tParamVal, tCompIn } from 'systemix';
 // the parametrization
 const AbcParams: tParamVal = {
 	Di: 30,
-	D1: 70,
-	D3: 50,
-	H1: 30,
-	H2: 20,
-	H3: 50
+	Da: 70,
+	Db: 50,
+	Ha: 30,
+	E1: 20,
+	Hb: 50
 };
 
 // inputs for compAbc

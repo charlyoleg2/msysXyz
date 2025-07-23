@@ -24,8 +24,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="1.1099335"
-     inkscape:cx="397.32112"
-     inkscape:cy="451.82889"
+     inkscape:cx="398.22206"
+     inkscape:cy="452.72983"
      inkscape:window-width="1854"
      inkscape:window-height="1131"
      inkscape:window-x="0"
@@ -282,7 +282,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect2-1-8);display:inline;fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="361.2832"
          y="154.78527"
-         id="tspan4">Da</tspan></text>
+         id="tspan3">Da</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-59.869709,8.3535168)"
@@ -290,7 +290,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect2-1-8-4);display:inline;fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="361.2832"
          y="154.78527"
-         id="tspan6">Db</tspan></text>
+         id="tspan4">Db</tspan></text>
     <path
        style="fill:#ececec;stroke:#008000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide-3-7)"
        d="M 46.465954,57.769149 38.37258,50.366843"
@@ -310,7 +310,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect5);fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="423.44922"
          y="409.75597"
-         id="tspan7">Hb</tspan></text>
+         id="tspan5">Hb</tspan></text>
     <path
        style="fill:#ececec;stroke:#008000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide);marker-end:url(#ArrowWide)"
        d="m 95.94441,133.84967 0.365945,22.66843"
@@ -322,7 +322,7 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect6);fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="435.16211"
          y="591.74816"
-         id="tspan8">Ha</tspan></text>
+         id="tspan6">Ha</tspan></text>
     <path
        style="fill:#ececec;stroke:#008000;stroke-width:0.264583;stroke-linejoin:round;stroke-dasharray:none;marker-start:url(#ArrowWide-8);marker-end:url(#ArrowWide-8)"
        d="m 90.528027,106.03662 0.36595,27.82869"
@@ -334,22 +334,22 @@
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect6-0);display:inline;fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="435.16211"
          y="591.74816"
-         id="tspan9">E1</tspan></text>
+         id="tspan7">E1</tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,10.726994,-37.663668)"
+       transform="matrix(0.26458333,0,0,0.26458333,1.2019931,-37.663668)"
        id="text3"
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect3);fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="179.28906"
          y="735.00011"
-         id="tspan10">compA</tspan></text>
+         id="tspan8">partA: compA</tspan></text>
     <text
        xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,-40.5242,-106.31643)"
+       transform="matrix(0.26458333,0,0,0.26458333,-41.053367,-106.31643)"
        id="text4"
        style="font-size:16px;line-height:normal;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect4);fill:#000000;stroke-width:1;-inkscape-stroke:none;stop-color:#000000"><tspan
          x="336.95703"
          y="742.20714"
-         id="tspan11">compB: sysXyz</tspan></text>
+         id="tspan9">partB: compXyz</tspan></text>
   </g>
 </svg>
