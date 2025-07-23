@@ -30,7 +30,8 @@
 	],
 	"tsup": {
 		"entry": [
-			"src/sysXyz-cli.ts"
+			"src/sysXyz-cli.ts",
+			"src/sysAbc-cli.ts"
 		],
 		"format": "esm",
 		"splitting": false,

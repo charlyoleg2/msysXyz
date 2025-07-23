@@ -20,10 +20,11 @@ const asmStlOscadStart = `// Abc_assembly.scad
 const asmStlOscadEnd = `
 module Abc_system () {
 	union () {
-		Abc_Xyz_stage1();
-		//Abc_Xyz_stage2();
-		Abc_Xyz_stage3();
-		Abc_Xyz_stage2_refine();
+		Abc_partA();
+		Abc_partB_stage1();
+		//Abc_partB_stage2();
+		Abc_partB_stage3();
+		Abc_partB_stage2_refine();
 	}
 }
 
@@ -47,10 +48,11 @@ print(f"outFileName: {outFileName}")
 ### directly working with Mesh
 def mesh_Abc_assembly():
 `;
-const asmStlFcEnd = `	assembly = MAbc_Xyz_stage1
-	#assembly = assembly.unite(MAbc_Xyz_stage2)
-	assembly = assembly.unite(MAbc_Xyz_stage3)
-	assembly = assembly.unite(MAbc_Xyz_stage2_refine)
+const asmStlFcEnd = `	assembly = MAbc_partA
+	#assembly = assembly.unite(MAbc_partB_stage1)
+	#assembly = assembly.unite(MAbc_partB_stage2)
+	assembly = assembly.unite(MAbc_partB_stage3)
+	assembly = assembly.unite(MAbc_partB_stage2_refine)
 	#assembly.write(f"{outFileName}.stl", "AST")
 	assembly.write(f"{outFileName}.stl")
 
