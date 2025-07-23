@@ -51,7 +51,10 @@
 		"runSysXyz": "dist/sysXyz-cli.js",
 		"runGenStlXyz": "bash tmp/gen_stl_Xyz.sh",
 		"runXyz": "run-s runSysXyz runGenStlXyz",
-		"run": "run-s runXyz",
+		"runSysAbc": "dist/sysAbc-cli.js",
+		"runGenStlAbc": "bash tmp/gen_stl_Abc.sh",
+		"runAbc": "run-s runSysAbc runGenStlAbc",
+		"run": "run-s runXyz runAbc",
 		"clean": "rimraf dist dist2 node_modules tmp tmp2"
 	},
 	"dependencies": {
