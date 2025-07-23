@@ -49,7 +49,7 @@ print(f"outFileName: {outFileName}")
 def mesh_Abc_assembly():
 `;
 const asmStlFcEnd = `	assembly = MAbc_partA
-	#assembly = assembly.unite(MAbc_partB_stage1)
+	assembly = assembly.unite(MAbc_partB_stage1)
 	#assembly = assembly.unite(MAbc_partB_stage2)
 	assembly = assembly.unite(MAbc_partB_stage3)
 	assembly = assembly.unite(MAbc_partB_stage2_refine)
