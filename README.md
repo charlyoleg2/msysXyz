@@ -88,6 +88,14 @@ For solving properly this issue, the API of *systemix* should be extended with e
 In this PoC, the API of *systemix* hasn't been extended. Instead, there is a small workaround in *pkg/sysXyz/src/index.ts*. But this workaround doesn't allow importing *system* from *system*.
 
 
+ToDo
+----
+
+- systemix: manage inheritence of positions and orientations
+- systemcli: create a real CLI with generic options
+- systemui: to be developed
+
+
 Publish a new release
 ---------------------
 
