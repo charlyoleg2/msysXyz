@@ -4,7 +4,7 @@
 //import type { tParamDef, tParamVal, tCompIn, tCompOut, tComponentDef, SysBlob } from 'systemix';
 import type { tParamDef, tSubRecord, tCompIn, tCompOut, tComponentDef } from 'systemix';
 //import { pNumber, pDropdown, pSectionSeparator, initCO, computeSubComp } from 'systemix';
-import { pNumber, pDropdown, pSectionSeparator, initCO, computeSubComp } from 'systemix';
+import { pNumber, pSectionSeparator, initCO, computeSubComp } from 'systemix';
 
 import { compASDef } from './compA';
 import { compXyzSDef } from '../sysXyz/compXyz';
@@ -44,6 +44,7 @@ function compCompute(ci: tCompIn): tCompOut {
 	const pa = rCO.pa;
 	// step21: compute intermediate parameters (pre-calculation)
 	const Htot = pa.Ha + pa.E1 + pa.Hb;
+	const Hbp = pa.Hb / 8;
 	// step22: check parameters
 	if (pa.Hb < 20) {
 		throw `err048: Hb ${pa.Hb} must be bigger than 20`;
@@ -58,7 +59,7 @@ function compCompute(ci: tCompIn): tCompOut {
 			pa: {
 				Di: pa.Di,
 				Da: pa.Da,
-				Ha: pa.Ha,
+				Ha: pa.Ha
 			},
 			orientation: [0, 0, 0],
 			position: [0, 0, 0]
@@ -67,9 +68,12 @@ function compCompute(ci: tCompIn): tCompOut {
 			component: compXyzSDef,
 			pa: {
 				Di: pa.Di,
-				T2: pa.T2,
-				H1: pa.H1,
-				N2: 3
+				D3: pa.Db,
+				T2: pa.Db * 1.5,
+				Q1: pa.Db * 1.2,
+				H1: Hbp * 2,
+				H2: Hbp,
+				stage2: 1
 			},
 			orientation: [0, 0, 0],
 			position: [0, 0, pa.Ha + pa.E1]
