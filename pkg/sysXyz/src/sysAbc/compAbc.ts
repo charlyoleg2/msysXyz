@@ -73,7 +73,8 @@ function compCompute(ci: tCompIn): tCompOut {
 				Q1: pa.Db * 1.2,
 				H1: Hbp * 2,
 				H2: Hbp,
-				stage2: 1
+				stage2: 1,
+				Zpos: pa.Ha + pa.E1
 			},
 			orientation: [0, 0, 0],
 			position: [0, 0, pa.Ha + pa.E1]

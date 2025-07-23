@@ -23,7 +23,8 @@ const compDef: tParamDef = {
 		pSectionSeparator('heights and details'),
 		pNumber('H1', 'mm', 40, 10, 1000, 1),
 		pNumber('H2', 'mm', 40, 10, 1000, 1),
-		pDropdown('stage2', ['square', 'triangle', 'cylinder'])
+		pDropdown('stage2', ['square', 'triangle', 'cylinder']),
+		pNumber('Zpos', 'mm', 0, -1000, 1000, 1)
 	],
 	paramSvg: {
 		Di: 'compXyz.svg',
@@ -32,7 +33,8 @@ const compDef: tParamDef = {
 		Q1: 'compXyz.svg',
 		H1: 'compXyz.svg',
 		H2: 'compXyz.svg',
-		stage2: 'compXyz.svg'
+		stage2: 'compXyz.svg',
+		Zpos: 'compXyz.svg'
 	},
 	sim: {
 		tMax: 180,
@@ -73,7 +75,7 @@ function compCompute(ci: tCompIn): tCompOut {
 				H1: pa.H1
 			},
 			orientation: [0, 0, 0],
-			position: [0, 0, 0]
+			position: [0, 0, pa.Zpos]
 		},
 		stage2: {
 			component: compYSDef,
@@ -81,11 +83,11 @@ function compCompute(ci: tCompIn): tCompOut {
 				Di: pa.Di,
 				T2: pa.T2,
 				H1: pa.H1,
-				Zpos: pa.H1 + pa.H2,
+				Zpos: pa.Zpos + Zoffset,
 				stage2: pa.stage2
 			},
 			orientation: [0, 0, 0],
-			position: [0, 0, Zoffset]
+			position: [0, 0, pa.Zpos + Zoffset]
 		},
 		stage3: {
 			component: compZSDef,
@@ -95,7 +97,7 @@ function compCompute(ci: tCompIn): tCompOut {
 				H1: pa.H1
 			},
 			orientation: [0, 0, 0],
-			position: [0, 0, 2 * Zoffset]
+			position: [0, 0, pa.Zpos + 2 * Zoffset]
 		}
 	};
 	rCO.sub = isub;
