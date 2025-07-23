@@ -18,7 +18,7 @@ const compDef: tParamDef = {
 		pNumber('T2', 'mm', 70, 1, 500, 1),
 		pSectionSeparator('heights and details'),
 		pNumber('H1', 'mm', 40, 10, 1000, 1),
-		pNumber('H2', 'mm', 40, 10, 1000, 1),
+		pNumber('Zpos', 'mm', 50, -1000, 1000, 1),
 		pDropdown('stage2', ['square', 'triangle', 'cylinder']),
 		pNumber('R2', 'mm', 5, 0, 100, 1)
 	],
@@ -90,7 +90,7 @@ function compCompute(ci: tCompIn): tCompOut {
 					N2: 3
 				},
 				orientation: [0, 0, 0],
-				position: [0, 0, pa.H1 + pa.H2]
+				position: [0, 0, pa.Zpos]
 			}
 		};
 		const [osub, log2, err2] = computeSubComp(ci.instName, isub);

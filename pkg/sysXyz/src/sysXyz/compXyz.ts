@@ -81,7 +81,7 @@ function compCompute(ci: tCompIn): tCompOut {
 				Di: pa.Di,
 				T2: pa.T2,
 				H1: pa.H1,
-				H2: pa.H2,
+				Zpos: pa.H1 + pa.H2,
 				stage2: pa.stage2
 			},
 			orientation: [0, 0, 0],
