@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { base } from '$app/paths';
+	import { resolve, asset } from '$app/paths';
 	import type { Snippet } from 'svelte';
 
 	// props
@@ -10,9 +10,9 @@
 </script>
 
 <header>
-	<a href="{base}/" style="text-decoration:none;color:navy;">
+	<a href={resolve('/')} style="text-decoration:none;color:navy;">
 		<h1>
-			<img src="{base}/systemix_logo.svg" alt="Feli's logo" width="42" height="42" />
+			<img src={asset('/systemix_logo.svg')} alt="Feli's logo" width="42" height="42" />
 			sysXyz pages
 		</h1>
 	</a>
