@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link href="../_app/immutable/assets/0.B6u7gyZm.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.BB6cNrgr.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DT7sGzKV.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/DWjfb4Fo.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CYOjpWgn.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CT73mNX3.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BxQxHFwM.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.CuTaNU4i.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BzhhpX_v.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CnpdfjTO.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BK4dWx_e.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.D3dQDpAe.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/B21rmNZL.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/4.DoPW0Voo.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/3bNII_am.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents"><!--[--><!--[--><!----><header><a href="../" style="text-decoration:none;color:navy;"><h1><img src="../systemix_logo.svg" alt="Feli's logo" width="42" height="42"/> sysXyz pages</h1></a></header> <main class="svelte-12qhfyh"><!----><h1>msysXyz</h1> <h2>Presentation</h2> <p><em>msysXyz</em> is the top-monorepo for the system-library <em>sysXyz</em>, which contains the parameters of the system <em>Xyz</em>.</p> <p>This monorepo contains the following <em>javascript</em> package:</p> <ol><li>systemix: the <em>systemix</em> library with its helper functions</li> <li>systemui: the helper library for making sysXyz-ui</li> <li>systemcli: the helper library for making sysXyz-cli</li> <li>sysXyz: a <em>systemix</em> library for managing the system parameters</li> <li>sysXyz-cli: the cli of sysXyz</li> <li>sysXyz-ui: the web-ui of sysXyz</li> <li>sysXyz-uis: the web-server of sysXyz-ui</li></ol> <p>This repo is a typical systemix-repository using <a href="https://charlyoleg2.github.io/systemix/" rel="nofollow">systemix</a>.
+The systemix-library and its associated UI and CLI are published as <em>npm-packages</em>.
+The UI is also available on the github-page.</p> <h2>Links</h2> <ul><li><a href="https://charlyoleg2.github.io/msysXyz/" rel="nofollow">sysXyz-ui</a> : public instance of the UI</li> <li><a href="https://github.com/charlyoleg2/msysXyz" rel="nofollow">sources</a> : git-repository</li> <li><a href="https://www.npmjs.com/package/sysXyz" rel="nofollow">pkg</a> : sysXyz as npm-package</li> <li><a href="https://www.npmjs.com/package/sysXyz-cli" rel="nofollow">pkg-cli</a> : sysXyz-cli as npm-package</li> <li><a href="https://www.npmjs.com/package/sysXyz-uis" rel="nofollow">pkg-uis</a> : sysXyz-uis as npm-package</li></ul> <h2>Usage for System-architects</h2> <p>Parametrize and generate your 3D-files with the online-app:</p> <p><a href="https://charlyoleg2.github.io/msysXyz/" rel="nofollow">https://charlyoleg2.github.io/msysXyz/</a></p> <p>Or use the UI locally:</p> <pre class="language-bash"><!----><code class="language-bash">npx sysXyz-uis</code><!----></pre> <p>Or use the command-line-interface (CLI):</p> <pre class="language-bash"><!----><code class="language-bash">npx sysXyz-cli</code><!----></pre> <h2>Getting started for Dev</h2> <pre class="language-bash"><!----><code class="language-bash"><span class="token function">git</span> clone https://github.com/charlyoleg2/msysXyz
+<span class="token builtin class-name">cd</span> msysXyz
+<span class="token function">npm</span> i
+<span class="token function">npm</span> run ci
+<span class="token function">npm</span> run preview</code><!----></pre> <p>Other useful commands:</p> <pre class="language-bash"><!----><code class="language-bash"><span class="token function">npm</span> run clean
+<span class="token function">npm</span> run ls-workspaces
+<span class="token function">npm</span> <span class="token parameter variable">-w</span> sysXyz run check
+<span class="token function">npm</span> <span class="token parameter variable">-w</span> sysXyz run build
+<span class="token function">npm</span> <span class="token parameter variable">-w</span> sysXyz-ui run dev</code><!----></pre> <h2>Prerequisite</h2> <ul><li><a href="https://nodejs.org" rel="nofollow">node</a> version 22.0.0 or higher</li> <li><a href="https://docs.npmjs.com/cli/v11/commands/npm" rel="nofollow">npm</a> version 11.0.0 or higher</li></ul> <h2>Singleton issue</h2> <p>The package <em>systemix</em> uses a <em>singleton</em> for storing the file-content to be written. As this singleton is used over 3 packages (systemix, sysXyz and sysXyz-cli), we are facing the issue <a href="https://github.com/charlyoleg2/mTestSingleton" rel="nofollow">singleton over several packages</a>.</p> <p>For solving properly this issue, the API of <em>systemix</em> should be extended with explicit reference to the singleton.</p> <p>In this PoC, the API of <em>systemix</em> hasn’t been extended. Instead, there is a small workaround in <em>pkg/sysXyz/src/index.ts</em>. But this workaround doesn’t allow importing <em>system</em> from <em>system</em>.</p> <h2>ToDo</h2> <ul><li>systemix: manage inheritence of positions and orientations</li> <li>systemcli: create a real CLI with generic options</li> <li>systemui: to be developed</li></ul> <h2>Publish a new release</h2> <pre class="language-bash"><!----><code class="language-bash"><span class="token function">npm</span> run versions
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">'increment sub versions'</span>
+<span class="token function">npm</span> version patch
+<span class="token function">git</span> push
+<span class="token function">git</span> push origin v0.5.6</code><!----></pre><!----><!----></main> <footer><h3>Links around Feli</h3> <ol><li><a href="https://www.npmjs.com/package/systemix">npm package</a></li> <li><a href="https://www.npmjs.com/package/create-systemix">npm package create</a></li> <li><a href="https://github.com/charlyoleg2/msysXyz">Github</a></li> <li><a href="https://charlyoleg2.github.io/msysXyz">Github pages</a></li></ol></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1i7t5a5 = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						assets: "/msysXyz"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BB6cNrgr.js"),
+						import("../_app/immutable/entry/app.CuTaNU4i.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
